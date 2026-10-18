@@ -1,0 +1,20 @@
+audit_id,category,item,status,severity,evidence_location,description
+AUD-01,Fair Protocol,Task A Test Set Equality,PASS,NONE,ml_model/src/preprocessing.py:1196,Both scenarios evaluate on the exact same 241 clean records
+AUD-02,Fair Protocol,Task B Test Set Equality,PASS,NONE,ml_model/src/preprocessing.py:1232,Both scenarios evaluate on the exact same 216 clean records
+AUD-03,Fair Protocol,Zero Cat A/B in Test Sets,PASS,NONE,ml_model/src/preprocessing.py:1194,Test sets partitioned strictly from clean pool (0 Cat A and 0 Cat B records)
+AUD-04,Fair Protocol,Zero Train/Test Overlap,PASS,NONE,ml_model/src/preprocessing.py:1213,Train and test partitions have zero index intersection
+AUD-05,Fair Protocol,Scenario 1 Cat B Training Inclusion,PASS,NONE,ml_model/src/preprocessing.py:1202,Eligible Category B records included in Scenario 1 training pool only
+AUD-06,Fair Protocol,Scenario 2 Cat B Total Exclusion,PASS,NONE,ml_model/src/preprocessing.py:1209,Category B records completely excluded from Scenario 2 training and test
+AUD-07,Fair Protocol,Task A Target Classes (9 classes),PASS,NONE,ml_model/src/preprocessing.py:1212,All 9 diagnosis classes preserved in Task A
+AUD-08,Fair Protocol,Task B Target Definitions,PASS,NONE,ml_model/src/preprocessing.py:1229,Only Healthy (0) and 5 Anemia subtypes (1); non-anemia classes excluded
+AUD-09,Leakage Risk,Target Feature Leakage,PASS,NONE,ml_model/src/preprocessing.py:67,Only 14 CBC features passed to X; Diagnosis excluded from predictors
+AUD-10,Leakage Risk,Row ID / Index Leakage,PASS,NONE,ml_model/src/preprocessing.py:67,No ID or index columns exist or passed as predictors
+AUD-11,Leakage Risk,Preprocessing Transform Fitting,PASS,NONE,ml_model/src/train.py:149,Imputer and StandardScaler fit strictly on training splits inside Pipeline
+AUD-12,Leakage Risk,Exact Duplicate Overlap,PASS,NONE,ml_model/src/preprocessing.py:345,Exact duplicates (49 rows) removed before train/test splitting
+AUD-13,Leakage Risk,Near-Duplicate Density,INFO,LOW,ml_model/dataset/anemia_types.csv,13 test samples have normalized Euclidean distance < 0.1 to nearest training sample due to pre-imputed mode values
+AUD-14,Metrics Verification,Metric Calculation Integrity,PASS,NONE,ml_model/reports/evaluation_results.csv,All 12 saved models reproduce exact reported metrics with zero deviation
+AUD-15,Threshold Audit,Training-Only Threshold Tuning,PASS,NONE,ml_model/src/train.py:111,Thresholds selected via 5-fold cross-validation on training data only
+AUD-16,High Score Investigation,Task B 100% Score Cause,INFO,LOW,ml_model/src/train.py:228,Perfect separation driven by clinical diagnostic criteria where Healthy HGB >= 13.0 and Anemia HGB <= 12.9
+AUD-17,Rare Class Uncertainty,Task A Rare Classes (Macrocytic & Leukemia w/ Thrombo),INFO,MEDIUM,ml_model/reports/model_comparison_report.txt,Macrocytic anemia has only 3 test samples and Leukemia w/ thrombocytopenia has only 2 test samples
+AUD-18,Artifact Integrity,All 12 Model Pipelines Exist & Load,PASS,NONE,ml_model/models/,All 12 joblib pipelines and metadata.json valid and verified
+AUD-19,CSV Integrity,Raw Dataset MD5 Checksum Intact,PASS,NONE,ml_model/dataset/anemia_types.csv,Checksum c6375e974d730a42b53160614237ddf0 verified untouched

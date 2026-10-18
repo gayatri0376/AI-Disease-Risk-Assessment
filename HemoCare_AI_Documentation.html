@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HemoCare AI — Comprehensive Project Documentation</title>
+<style>
+  :root {
+    --primary: #1e40af;
+    --primary-light: #eff6ff;
+    --secondary: #0284c7;
+    --accent: #0f766e;
+    --dark: #0f172a;
+    --text: #334155;
+    --border: #e2e8f0;
+    --bg-light: #f8fafc;
+    --success: #16a34a;
+  }
+  @page {
+    size: A4;
+    margin: 20mm;
+  }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    background: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 900px;
+    margin: auto;
+    padding: 30px;
+  }
+  .print-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    z-index: 1000;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .print-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+  }
+  @media print {
+    .print-btn { display: none; }
+    body { font-size: 11pt; }
+    h1 { page-break-before: always; }
+    h1:first-of-type { page-break-before: avoid; }
+    table { page-break-inside: avoid; }
+    pre { page-break-inside: avoid; }
+  }
+  .cover {
+    text-align: center;
+    padding: 60px 0 40px;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 40px;
+  }
+  .cover h1 {
+    font-size: 36px;
+    color: var(--primary);
+    margin: 0 0 10px;
+    letter-spacing: -0.5px;
+  }
+  .cover h2 {
+    font-size: 20px;
+    color: var(--secondary);
+    font-weight: 500;
+    margin: 0 0 20px;
+  }
+  .cover .badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 4px;
+  }
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    background: var(--bg-light);
+    padding: 16px;
+    border-radius: 8px;
+    margin: 24px auto 0;
+    max-width: 600px;
+    text-align: left;
+    font-size: 13px;
+    border: 1px solid var(--border);
+  }
+  h2 {
+    color: var(--dark);
+    font-size: 24px;
+    border-bottom: 2px solid var(--primary-light);
+    padding-bottom: 8px;
+    margin-top: 40px;
+  }
+  h3 {
+    color: var(--primary);
+    font-size: 18px;
+    margin-top: 24px;
+  }
+  h4 {
+    color: var(--dark);
+    font-size: 15px;
+    margin-top: 16px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 13px;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 10px 12px;
+    text-align: left;
+  }
+  th {
+    background: var(--bg-light);
+    color: var(--dark);
+    font-weight: 600;
+  }
+  tr:nth-child(even) {
+    background: #fafbfd;
+  }
+  code {
+    background: #f1f5f9;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 12.5px;
+  }
+  pre {
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 16px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+  }
+  .callout {
+    background: var(--primary-light);
+    border-left: 4px solid var(--primary);
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    margin: 18px 0;
+    font-size: 13.5px;
+  }
+  .callout-success {
+    background: #f0fdf4;
+    border-left-color: var(--success);
+  }
+  ul, ol {
+    padding-left: 24px;
+  }
+  li {
+    margin-bottom: 6px;
+  }
+</style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">🖨️ Download / Print PDF</button>
+
+<div class="container">
+
+  <!-- Cover Header -->
+  <div class="cover">
+    <h1>HemoCare AI</h1>
+    <h2>AI-Powered Anemia Screening & Connected Clinical Care Platform</h2>
+    <div>
+      <span class="badge">College Major Project</span>
+      <span class="badge">Full-Stack Architecture</span>
+      <span class="badge">Machine Learning (Random Forest)</span>
+      <span class="badge">MySQL Relational DB</span>
+    </div>
+    <div class="meta-grid">
+      <div><b>Backend Framework:</b> Django 5.2 (REST Framework)</div>
+      <div><b>Frontend Stack:</b> React 18 + Vite + Recharts</div>
+      <div><b>Database Engine:</b> MySQL 8.0 (anemia_system)</div>
+      <div><b>ML Algorithms:</b> Random Forest Dual-Inference</div>
+      <div><b>Authentication:</b> Django PBKDF2 SHA-256 Auth</div>
+      <div><b>API Style:</b> JSON RESTful Endpoints + CORS</div>
+    </div>
+  </div>
+
+  <!-- Section 1 -->
+  <h2>1. Project Architecture & End-to-End Pipeline</h2>
+  <p>
+    <strong>HemoCare AI</strong> is a healthcare web platform that automates preliminary anemia detection 
+    from Complete Blood Count (CBC) laboratory indices. It bridges patient self-assessment, machine learning inference, 
+    clinical recommendation generation, and doctor consultation into a unified ecosystem.
+  </p>
+
+  <div class="callout callout-success">
+    <strong>System Flow:</strong><br>
+    <code>React UI Form</code> ➔ <code>POST /api/screen-patient/</code> ➔ <code>Django REST Framework</code> ➔ <code>Random Forest Classifier</code> ➔ <code>MySQL Storage</code> ➔ <code>Clinical Report JSON</code> ➔ <code>Interactive Visual Result</code>
+  </div>
+
+  <!-- Section 2 -->
+  <h2>2. Backend Architecture & Files Directory</h2>
+  <p>Located in root directory: <code>E:\mohini's program\.vscode\Anemia screening\</code></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">File Path</th>
+        <th style="width: 25%;">Primary Components</th>
+        <th>Detailed Purpose & Role in System</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>screening/models.py</code></td>
+        <td>
+          <code>Patient</code>, <code>BloodReport</code>, <code>ScreeningResult</code>, 
+          <code>DiagnosisReport</code>, <code>Recommendation</code>, <code>Doctor</code>, 
+          <code>Appointment</code>, <code>MLModel</code>
+        </td>
+        <td>
+          Defines the MySQL schema through Django ORM. Contains 12 models covering demographic data, 
+          14 CBC parameters, symptoms JSON, dual-inference outputs, clinical advice, and doctor booking.
+        </td>
+      </tr>
+      <tr>
+        <td><code>screening/services.py</code></td>
+        <td>
+          <code>run_patient_screening_pipeline()</code>, 
+          <code>generate_clinical_recommendations()</code>
+        </td>
+        <td>
+          The master orchestration service. Resolves patient records, validates CBC inputs, executes ML predictions 
+          (Tasks A and B), generates prioritized medical recommendations, and commits all records to MySQL in a single transaction.
+        </td>
+      </tr>
+      <tr>
+        <td><code>screening/views.py</code></td>
+        <td>
+          <code>ScreenPatientAPIView</code>, <code>RegisterAPIView</code>, 
+          <code>LoginAPIView</code>, <code>LogoutAPIView</code>, ViewSets
+        </td>
+        <td>
+          Handles HTTP requests. Exposes CRUD APIs for patients, doctors, appointments, and blood reports. 
+          Provides secure authentication views (Register, Login, Logout) and the unified AI screening endpoint.
+        </td>
+      </tr>
+      <tr>
+        <td><code>screening/serializers.py</code></td>
+        <td>
+          <code>ScreenPatientRequestSerializer</code>, 
+          ModelSerializers
+        </td>
+        <td>
+          Validates incoming JSON payloads. Maps user-friendly frontend form labels (e.g. <em>"Hemoglobin"</em>, <em>"Weight (kg)"</em>) 
+          and fills population median defaults for unsupplied differential cell counts.
+        </td>
+      </tr>
+      <tr>
+        <td><code>screening/urls.py</code></td>
+        <td>
+          <code>DefaultRouter</code>, Auth Paths, <code>screen-patient/</code>
+        </td>
+        <td>
+          Maps REST endpoints to view logic: <code>/api/auth/register/</code>, <code>/api/auth/login/</code>, 
+          <code>/api/auth/logout/</code>, <code>/api/screen-patient/</code>, and model resource routes.
+        </td>
+      </tr>
+      <tr>
+        <td><code>config/settings.py</code></td>
+        <td>
+          <code>DATABASES</code>, <code>CORS_ALLOWED_ORIGINS</code>, <code>INSTALLED_APPS</code>
+        </td>
+        <td>
+          Central Django configuration: connects local MySQL database (<code>anemia_system</code>), enables CORS headers 
+          for React (port 5173), and loads authentication and screening apps.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Section 3 -->
+  <h2>3. Machine Learning Inference Engine</h2>
+  <p>Located in: <code>backend/apps/ml_service/</code> and <code>ml_model/models/</code></p>
+  <p>
+    The system uses an ensemble <strong>Random Forest Classifier</strong> trained and audited across two distinct clinical tasks:
+  </p>
+
+  <h3>A. Task B: Binary Anemia Screening (Healthy vs. Anemia)</h3>
+  <ul>
+    <li><strong>Model:</strong> Tuned Random Forest Classifier (<code>task_b_scenario2_random_forest.joblib</code>)</li>
+    <li><strong>Operating Threshold:</strong> <code>0.37</code> (Mathematically calibrated to maximize Sensitivity/Recall)</li>
+    <li><strong>Sensitivity (Recall):</strong> <code>100.0%</code> (Zero False Negatives on test benchmarks — ensuring no anemic patient is missed)</li>
+    <li><strong>ROC-AUC:</strong> <code>1.0000</code> | <strong>PR-AUC:</strong> <code>1.0000</code></li>
+    <li><strong>Role:</strong> Decides whether patient is "Low Risk" (Healthy) or "Needs Attention" (Anemia Detected).</li>
+  </ul>
+
+  <h3>B. Task A: 9-Class Multiclass Hematologic Subtype Diagnosis</h3>
+  <ul>
+    <li><strong>Model:</strong> Multi-output Random Forest (<code>task_a_scenario2_random_forest.joblib</code>)</li>
+    <li><strong>Subtypes Classified:</strong>
+      <ol>
+        <li>Healthy (Non-Anemic)</li>
+        <li>Iron deficiency anemia</li>
+        <li>Normocytic normochromic anemia</li>
+        <li>Normocytic hypochromic anemia</li>
+        <li>Other microcytic anemia</li>
+        <li>Macrocytic anemia</li>
+        <li>Thrombocytopenia</li>
+        <li>Leukemia</li>
+        <li>Leukemia with thrombocytopenia</li>
+      </ol>
+    </li>
+    <li><strong>Role:</strong> Calculates calibrated class probability distributions and characterizes the specific underlying etiology.</li>
+  </ul>
+
+  <h3>C. 14 Complete Blood Count (CBC) Features Analyzed</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th>Abbreviation</th>
+        <th>Unit</th>
+        <th>Physiological Normal Range</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Hemoglobin</td><td><code>HGB</code></td><td>g/dL</td><td>12.0 – 16.0 (F), 13.5 – 17.5 (M)</td></tr>
+      <tr><td>Red Blood Cell Count</td><td><code>RBC</code></td><td>x10⁶/µL</td><td>3.80 – 5.50</td></tr>
+      <tr><td>Hematocrit (PCV)</td><td><code>HCT</code></td><td>%</td><td>36.0 – 50.0</td></tr>
+      <tr><td>Mean Corpuscular Volume</td><td><code>MCV</code></td><td>fL</td><td>80.0 – 100.0</td></tr>
+      <tr><td>Mean Corpuscular Hemoglobin</td><td><code>MCH</code></td><td>pg</td><td>27.0 – 33.0</td></tr>
+      <tr><td>Mean Corpuscular HGB Conc</td><td><code>MCHC</code></td><td>g/dL</td><td>32.0 – 36.0</td></tr>
+      <tr><td>Red Cell Distribution Width</td><td><code>RDW</code></td><td>%</td><td>11.5 – 14.5</td></tr>
+      <tr><td>White Blood Cell Count</td><td><code>WBC</code></td><td>x10³/µL</td><td>4.5 – 11.0</td></tr>
+      <tr><td>Platelet Count</td><td><code>PLT</code></td><td>x10³/µL</td><td>150.0 – 450.0</td></tr>
+      <tr><td>Lymphocyte Percentage</td><td><code>LYMp</code></td><td>%</td><td>20.0 – 40.0 (Median: 28.0)</td></tr>
+      <tr><td>Neutrophil Percentage</td><td><code>NEUTp</code></td><td>%</td><td>50.0 – 70.0 (Median: 62.0)</td></tr>
+      <tr><td>Absolute Lymphocyte Count</td><td><code>LYMn</code></td><td>x10³/µL</td><td>1.0 – 3.0 (Median: 2.0)</td></tr>
+      <tr><td>Absolute Neutrophil Count</td><td><code>NEUTn</code></td><td>x10³/µL</td><td>2.0 – 7.0 (Median: 4.5)</td></tr>
+      <tr><td>Platelet Distribution Width</td><td><code>PDW</code></td><td>fL</td><td>9.0 – 17.0 (Median: 12.5)</td></tr>
+      <tr><td>Plateletcrit</td><td><code>PCT</code></td><td>%</td><td>0.15 – 0.40 (Median: 0.25)</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Section 4 -->
+  <h2>4. Frontend Architecture (React + Vite)</h2>
+  <p>Located in: <code>E:\mohini's program\.vscode\Anemia screening\AI-Anemia-Screening\</code></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 28%;">File Path</th>
+        <th style="width: 25%;">Exported Views</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>src/App.jsx</code></td>
+        <td><code>App()</code></td>
+        <td>Main router setup with React Router v6. Defines public, patient, doctor, and admin protected routes.</td>
+      </tr>
+      <tr>
+        <td><code>src/layouts/AppLayout.jsx</code></td>
+        <td><code>AppLayout()</code></td>
+        <td>
+          Navigation shell. Houses top bar (with real user initials, dynamic profile dropdown, z-index 50/60 layering) 
+          and responsive collapsible sidebar with logout integration.
+        </td>
+      </tr>
+      <tr>
+        <td><code>src/context/AppContext.jsx</code></td>
+        <td><code>AppProvider()</code>, <code>useApp()</code></td>
+        <td>
+          Global state provider. Manages active role, authenticated <code>currentUser</code>, toast notifications, 
+          and handles synchronized logout with session clearing.
+        </td>
+      </tr>
+      <tr>
+        <td><code>src/pages/patient/Patient.jsx</code></td>
+        <td>
+          <code>PDash</code>, <code>Assess</code>, <code>Result</code>, 
+          <code>Reports</code>, <code>Doctors</code>, <code>Appts</code>, 
+          <code>PatientProfile</code>
+        </td>
+        <td>
+          Patient portal: Time-based greeting (<em>"Good morning/afternoon/evening, [User]"</em>), 4-step assessment wizard, 
+          real-time ML result view, appointment booking, and live MySQL profile editing.
+        </td>
+      </tr>
+      <tr>
+        <td><code>src/pages/public/Public.jsx</code></td>
+        <td><code>Landing</code>, <code>Info</code>, <code>Auth</code></td>
+        <td>
+          Public landing page, education module, and connected Registration/Login form linked to 
+          <code>/api/auth/register/</code> and <code>/api/auth/login/</code>.
+        </td>
+      </tr>
+      <tr>
+        <td><code>src/pages/doctor/Doctor.jsx</code></td>
+        <td><code>DDash</code>, <code>DPatients</code>, <code>DReports</code></td>
+        <td>Doctor clinical portal displaying registered patients from MySQL database.</td>
+      </tr>
+      <tr>
+        <td><code>src/pages/admin/Admin.jsx</code></td>
+        <td><code>ADash</code>, <code>APatients</code>, <code>ADoctors</code></td>
+        <td>Administrative dashboard showing platform analytics and system records.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Section 5 -->
+  <h2>5. How to Run the Project (Step-by-Step Guide)</h2>
+
+  <h3>Terminal 1: Start Django Backend Server</h3>
+  <pre><code>cd "E:\mohini's program\.vscode\Anemia screening"
+.\venv\Scripts\python manage.py runserver</code></pre>
+  <p>➔ Runs on: <strong>http://127.0.0.1:8000/</strong></p>
+
+  <h3>Terminal 2: Start React Frontend Server</h3>
+  <pre><code>cd "E:\mohini's program\.vscode\Anemia screening\AI-Anemia-Screening"
+npm run dev</code></pre>
+  <p>➔ Runs on: <strong>http://localhost:5173/</strong></p>
+
+  <!-- Section 6 -->
+  <h2>6. MySQL Database Schema & Demonstration Queries</h2>
+  <p>Database: <code>anemia_system</code> (MySQL Port: 3306)</p>
+
+  <h3>A. Core Database Tables</h3>
+  <ul>
+    <li><code>screening_patient</code>: Patient profiles (name, email, age, gender, weight, height).</li>
+    <li><code>screening_bloodreport</code>: 14 CBC parameters, RDW, and symptoms.</li>
+    <li><code>screening_screeningresult</code>: AI screening predictions, confidence scores, and raw JSON.</li>
+    <li><code>screening_diagnosisreport</code>: Multiclass subtype diagnoses and limitations.</li>
+    <li><code>screening_recommendation</code>: Generated medical actions and priority tags.</li>
+    <li><code>screening_doctor</code>: Verified doctor directory for consultations.</li>
+    <li><code>screening_appointment</code>: Consultation bookings between patients and doctors.</li>
+    <li><code>auth_user</code>: Secure Django user table with PBKDF2 hashed passwords.</li>
+  </ul>
+
+  <h3>B. Key SQL Queries for Viva & Evaluation</h3>
+
+  <h4>Query 1: View Clean Patient Screening Report with Diagnosis</h4>
+  <pre><code>USE anemia_system;
+
+SELECT 
+    p.name AS Patient_Name,
+    p.gender AS Gender,
+    b.hemoglobin AS Hemoglobin_g_dL,
+    b.mcv AS MCV_fL,
+    r.prediction_label AS Screening_Status,
+    CONCAT(ROUND(r.confidence * 100, 1), '%') AS Confidence,
+    d.interpretation AS AI_Interpretation
+FROM screening_screeningresult r
+JOIN screening_screeningrequest req ON r.request_id = req.id
+JOIN screening_bloodreport b ON req.blood_report_id = b.id
+JOIN screening_patient p ON b.patient_id = p.id
+JOIN screening_diagnosisreport d ON d.result_id = r.id
+ORDER BY r.id DESC;</code></pre>
+
+  <h4>Query 2: Extract Subtype Probabilities from JSON</h4>
+  <pre><code>SELECT 
+    id AS Result_ID,
+    prediction_label AS Status,
+    raw_output->>'$.task_a.predicted_diagnosis' AS Specific_Diagnosis,
+    raw_output->>'$.task_b.probability_healthy' AS Healthy_Probability,
+    raw_output->>'$.task_b.probability_anemia' AS Anemia_Probability
+FROM screening_screeningresult
+ORDER BY id DESC LIMIT 5;</code></pre>
+
+  <h4>Query 3: View Booked Appointments</h4>
+  <pre><code>SELECT 
+    id,
+    patient_name,
+    doctor_name,
+    date,
+    time,
+    status,
+    why AS Consultation_Reason
+FROM screening_appointment
+ORDER BY id DESC;</code></pre>
+
+  <h4>Query 4: View Registered Patients and Demographics</h4>
+  <pre><code>SELECT 
+    id,
+    name,
+    email,
+    age,
+    gender,
+    weight AS Weight_kg,
+    height AS Height_cm
+FROM screening_patient
+ORDER BY id DESC;</code></pre>
+
+  <hr style="margin-top: 40px; border: 0; border-top: 1px solid var(--border);">
+  <p style="text-align: center; color: var(--text); font-size: 13px;">
+    <strong>HemoCare AI</strong> — Designed & Developed for Academic Demonstration & College Major Project Evaluation.<br>
+    © 2026 HemoCare AI Project Team. All Rights Reserved.
+  </p>
+
+</div>
+</body>
+</html>

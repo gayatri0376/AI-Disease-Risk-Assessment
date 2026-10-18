@@ -1,0 +1,33 @@
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Python compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Databases (Local test db)
+*.sqlite3
+db.sqlite3
+
+# Node modules & production builds
+node_modules/
+AI-Anemia-Screening/node_modules/
+AI-Anemia-Screening/dist/
+dist/
+build/
+
+# Logs and environment
+*.log
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+.git_backup
+AI-Anemia-Screening/.git_backup

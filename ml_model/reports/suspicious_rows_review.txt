@@ -1,0 +1,1065 @@
+==============================================================================
+SUSPICIOUS RECORD REVIEW — AI-Based Anemia Screening Project
+Phase 3/4 Transition — Pre-Preprocessing Investigation
+==============================================================================
+
+IMPORTANT NOTES
+------------------------------------------------------------------------------
+1. This report does NOT modify, delete, or cap any values.
+2. The original CSV is untouched (MD5 verified before and after).
+3. Categories are assigned per (column, value) pair:
+   A — Demonstrably invalid: reliable physical or logical evidence
+       proves the value is impossible (e.g., HGB < 0, NEUTp > 100%).
+   B — Suspicious / unverifiable: the value is extreme and likely
+       erroneous but the cause cannot be established from this data.
+   C — Extreme but possibly genuine: unusual value with a plausible
+       pathological explanation; no strong evidence of an error.
+
+TERMINOLOGY
+------------------------------------------------------------------------------
+  CSV Row Number : 1-indexed line in anemia_types.csv (row 1 = header)
+  DataFrame Index: 0-indexed row position in pandas (0 = first data row)
+  Relationship   : CSV row = DataFrame index + 2
+
+TOTAL FLAGGED: 29 unique rows contain at least one suspicious value.
+
+==============================================================================
+DETAILED ROW-BY-ROW REVIEW
+==============================================================================
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD  1 of 29  |  CSV Row: 6  |  DataFrame Index: 4  |  Overall Category: A
+  Diagnosis: Normocytic hypochromic anemia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =       4.2000  x10^3/uL    
+    LYMp     =      39.1000  %           
+    NEUTp    =      53.7000  %           
+    LYMn     =       1.6000  x10^3/uL    
+    NEUTn    =       2.3000  x10^3/uL    
+    RBC      =       3.9300  x10^6/uL    
+    HGB      =       0.4000  g/dL        
+    HCT      =     316.0000  %            <-- FLAGGED
+    MCV      =      80.6000  fL          
+    MCH      =      23.9000  pg          
+    MCHC     =      29.7000  g/dL        
+    PLT      =     236.0000  x10^3/uL    
+    PDW      =      12.8000  fL          
+    PCT      =       0.2200  %           
+
+  FLAG DETAILS:
+    Column  : HCT (%)
+    Value   : 316.0
+    Bounds  : [5.0, 75.0]
+    Issue   : above maximum
+    Category: A
+    Rationale: HCT=316.0. Haematocrit is a percentage; values above 100% are physically impossible. Likely a data-entry or unit error (e.g., multiplied by 10 or 100).
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD  2 of 29  |  CSV Row: 7  |  DataFrame Index: 5  |  Overall Category: B
+  Diagnosis: Other microcytic anemia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =       6.6000  x10^3/uL    
+    LYMp     =      27.3000  %           
+    NEUTp    =      65.4000  %           
+    LYMn     =       1.8000  x10^3/uL    
+    NEUTn    =       4.3000  x10^3/uL    
+    RBC      =       3.9600  x10^6/uL    
+    HGB      =       8.8000  g/dL        
+    HCT      =      29.7000  %           
+    MCV      =      75.2000  fL          
+    MCH      =      22.2000  pg          
+    MCHC     =      79.6000  g/dL         <-- FLAGGED
+    PLT      =     207.0000  x10^3/uL    
+    PDW      =      11.5000  fL          
+    PCT      =       0.1800  %           
+
+  FLAG DETAILS:
+    Column  : MCHC (g/dL)
+    Value   : 79.6
+    Bounds  : [15.0, 45.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: MCHC=79.6 g/dL. Values above 40 are clinically rare (hyperchromia); above 50 virtually never occur physiologically. Likely a data-entry error, but unverifiable from this dataset.
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD  3 of 29  |  CSV Row: 93  |  DataFrame Index: 91  |  Overall Category: B
+  Diagnosis: Normocytic hypochromic anemia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =       5.2000  x10^3/uL    
+    LYMp     =      33.0000  %           
+    NEUTp    =      59.5000  %           
+    LYMn     =       1.7000  x10^3/uL    
+    NEUTn    =       3.1000  x10^3/uL    
+    RBC      =       4.4000  x10^6/uL    
+    HGB      =      11.7000  g/dL        
+    HCT      =      37.3000  %           
+    MCV      =      84.8000  fL          
+    MCH      =      26.5000  pg          
+    MCHC     =      61.3000  g/dL         <-- FLAGGED
+    PLT      =     210.0000  x10^3/uL    
+    PDW      =      16.9000  fL          
+    PCT      =       0.2200  %           
+
+  FLAG DETAILS:
+    Column  : MCHC (g/dL)
+    Value   : 61.3
+    Bounds  : [15.0, 45.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: MCHC=61.3 g/dL. Values above 40 are clinically rare (hyperchromia); above 50 virtually never occur physiologically. Likely a data-entry error, but unverifiable from this dataset.
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD  4 of 29  |  CSV Row: 98  |  DataFrame Index: 96  |  Overall Category: B
+  Diagnosis: Normocytic normochromic anemia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =       2.8000  x10^3/uL    
+    LYMp     =      47.3000  %           
+    NEUTp    =      44.6000  %           
+    LYMn     =       1.3000  x10^3/uL    
+    NEUTn    =       1.3000  x10^3/uL    
+    RBC      =       3.4400  x10^6/uL    
+    HGB      =       9.6000  g/dL        
+    HCT      =      30.3000  %           
+    MCV      =      88.2000  fL          
+    MCH      =      27.9000  pg          
+    MCHC     =      61.6000  g/dL         <-- FLAGGED
+    PLT      =     133.0000  x10^3/uL    
+    PDW      =      12.8000  fL          
+    PCT      =       0.1200  %           
+
+  FLAG DETAILS:
+    Column  : MCHC (g/dL)
+    Value   : 61.6
+    Bounds  : [15.0, 45.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: MCHC=61.6 g/dL. Values above 40 are clinically rare (hyperchromia); above 50 virtually never occur physiologically. Likely a data-entry error, but unverifiable from this dataset.
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD  5 of 29  |  CSV Row: 203  |  DataFrame Index: 201  |  Overall Category: B
+  Diagnosis: Normocytic hypochromic anemia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =      10.5000  x10^3/uL    
+    LYMp     =      12.4000  %           
+    NEUTp    =      79.0000  %           
+    LYMn     =       1.3000  x10^3/uL    
+    NEUTn    =       8.3000  x10^3/uL    
+    RBC      =       4.5700  x10^6/uL    
+    HGB      =      12.4000  g/dL        
+    HCT      =      38.9000  %           
+    MCV      =      85.3000  fL          
+    MCH      =      27.1000  pg          
+    MCHC     =      31.8000  g/dL        
+    PLT      =      12.4000  x10^3/uL    
+    PDW      =       8.6000  fL          
+    PCT      =      11.3000  %            <-- FLAGGED
+
+  FLAG DETAILS:
+    Column  : PCT (%)
+    Value   : 11.3
+    Bounds  : [0.005, 5.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: PCT=11.3%. Plateletcrit above 5% is extreme. Typical range is 0.1–0.5%. These values (11–14%) are likely data-entry errors but cannot be confirmed.
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD  6 of 29  |  CSV Row: 208  |  DataFrame Index: 206  |  Overall Category: B
+  Diagnosis: Other microcytic anemia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =       6.0000  x10^3/uL    
+    LYMp     =      39.0000  %           
+    NEUTp    =      53.2000  %           
+    LYMn     =       2.0000  x10^3/uL    
+    NEUTn    =       0.5000  x10^3/uL    
+    RBC      =       3.2000  x10^6/uL    
+    HGB      =       4.8200  g/dL        
+    HCT      =      12.1000  %           
+    MCV      =      36.6000  fL          
+    MCH      =      76.0000  pg           <-- FLAGGED
+    MCHC     =      25.1000  g/dL        
+    PLT      =      13.9000  x10^3/uL    
+    PDW      =       9.3000  fL          
+    PCT      =      12.8000  %            <-- FLAGGED
+
+  FLAG DETAILS:
+    Column  : MCH (pg)
+    Value   : 76.0
+    Bounds  : [10.0, 50.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: MCH=76.0 pg. Normal range is 27–33 pg; upper clinical limit ~45 pg. Values like 275 are ~10× the maximum. Likely a ×10 unit error, but unverifiable here.
+
+    Column  : PCT (%)
+    Value   : 12.8
+    Bounds  : [0.005, 5.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: PCT=12.8%. Plateletcrit above 5% is extreme. Typical range is 0.1–0.5%. These values (11–14%) are likely data-entry errors but cannot be confirmed.
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD  7 of 29  |  CSV Row: 218  |  DataFrame Index: 216  |  Overall Category: A
+  Diagnosis: Normocytic hypochromic anemia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =       4.2000  x10^3/uL    
+    LYMp     =      39.1000  %           
+    NEUTp    =    5317.0000  %            <-- FLAGGED
+    LYMn     =       1.6000  x10^3/uL    
+    NEUTn    =       2.3000  x10^3/uL    
+    RBC      =       3.9300  x10^6/uL    
+    HGB      =       9.4000  g/dL        
+    HCT      =      31.6000  %           
+    MCV      =      80.6000  fL          
+    MCH      =      23.9000  pg          
+    MCHC     =      29.7000  g/dL        
+    PLT      =     236.0000  x10^3/uL    
+    PDW      =      12.8000  fL          
+    PCT      =       0.2200  %           
+
+  FLAG DETAILS:
+    Column  : NEUTp (%)
+    Value   : 5317.0
+    Bounds  : [0.5, 100.0]
+    Issue   : above maximum
+    Category: A
+    Rationale: NEUTp=5317.0. Neutrophil percentage cannot exceed 100%. This is likely a data-entry error (possibly raw count entered instead of percentage).
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD  8 of 29  |  CSV Row: 239  |  DataFrame Index: 237  |  Overall Category: B
+  Diagnosis: Leukemia with thrombocytopenia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =      10.5000  x10^3/uL    
+    LYMp     =      16.5000  %           
+    NEUTp    =      75.0000  %           
+    LYMn     =       1.7000  x10^3/uL    
+    NEUTn    =      79.0000  x10^3/uL     <-- FLAGGED
+    RBC      =       5.5400  x10^6/uL    
+    HGB      =      14.9000  g/dL        
+    HCT      =      47.2000  %           
+    MCV      =      85.3000  fL          
+    MCH      =      26.8000  pg          
+    MCHC     =      31.5000  g/dL        
+    PLT      =      89.0000  x10^3/uL    
+    PDW      =      10.5000  fL          
+    PCT      =       0.0800  %           
+
+  FLAG DETAILS:
+    Column  : NEUTn (x10^3/uL)
+    Value   : 79.0
+    Bounds  : [0.1, 50.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: NEUTn=79.0 x10^3/uL. Extreme neutrophilia (>50) is possible in severe infection but very unusual. Value of 79 with the associated diagnosis needs review.
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD  9 of 29  |  CSV Row: 243  |  DataFrame Index: 241  |  Overall Category: B
+  Diagnosis: Other microcytic anemia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =       6.5000  x10^3/uL    
+    LYMp     =      44.0000  %           
+    NEUTp    =      47.0000  %           
+    LYMn     =       3.0000  x10^3/uL    
+    NEUTn    =      12.9000  x10^3/uL    
+    RBC      =      41.1000  x10^6/uL     <-- FLAGGED
+    HGB      =      85.1000  g/dL         <-- FLAGGED
+    HCT      =      26.6000  %           
+    MCV      =      31.3000  fL          
+    MCH      =      37.2000  pg          
+    MCHC     =      12.4000  g/dL         <-- FLAGGED
+    PLT      =      11.8000  x10^3/uL    
+    PDW      =      21.8000  fL          
+    PCT      =       0.1400  %           
+
+  FLAG DETAILS:
+    Column  : RBC (x10^6/uL)
+    Value   : 41.1
+    Bounds  : [1.0, 10.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: RBC=41.10 x10^6/uL. The maximum physiologically plausible value is ~9–10. Values like 29.7, 41.1, 90.8 are likely unit errors (e.g., recorded as x10^4 instead of x10^6) but this cannot be verified from the CSV alone.
+
+    Column  : HGB (g/dL)
+    Value   : 85.1
+    Bounds  : [0.0, 25.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: HGB=85.1 g/dL. The highest reliably reported HGB is ~23 g/dL. Values of 41, 85, 87 are likely data-entry or unit errors but cannot be confirmed from this dataset.
+
+    Column  : MCHC (g/dL)
+    Value   : 12.4
+    Bounds  : [15.0, 45.0]
+    Issue   : below minimum
+    Category: C
+    Rationale: MCHC=12.4 g/dL. Very low; possible in severe hypochromic anaemia. No direct evidence of an error.
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD 10 of 29  |  CSV Row: 247  |  DataFrame Index: 245  |  Overall Category: A
+  Diagnosis: Iron deficiency anemia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =       9.1000  x10^3/uL    
+    LYMp     =       8.9000  %           
+    NEUTp    =      86.1000  %           
+    LYMn     =       0.8000  x10^3/uL    
+    NEUTn    =       7.8000  x10^3/uL    
+    RBC      =       4.6600  x10^6/uL    
+    HGB      =     -10.0000  g/dL         <-- FLAGGED
+    HCT      =      34.6000  %           
+    MCV      =      74.4000  fL          
+    MCH      =      21.4000  pg          
+    MCHC     =      28.9000  g/dL        
+    PLT      =     312.0000  x10^3/uL    
+    PDW      =      12.3000  fL          
+    PCT      =       0.2800  %           
+
+  FLAG DETAILS:
+    Column  : HGB (g/dL)
+    Value   : -10.0
+    Bounds  : [0.0, 25.0]
+    Issue   : below minimum
+    Category: A
+    Rationale: HGB is negative. Haemoglobin concentration cannot be less than 0 g/dL. This is physically impossible.
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD 11 of 29  |  CSV Row: 254  |  DataFrame Index: 252  |  Overall Category: B
+  Diagnosis: Thrombocytopenia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =       6.2000  x10^3/uL    
+    LYMp     =      22.4000  %           
+    NEUTp    =      70.7000  %           
+    LYMn     =       1.4000  x10^3/uL    
+    NEUTn    =       4.4000  x10^3/uL    
+    RBC      =       5.4300  x10^6/uL    
+    HGB      =      15.4000  g/dL        
+    HCT      =      48.9000  %           
+    MCV      =      90.2000  fL          
+    MCH      =      28.3000  pg          
+    MCHC     =      31.4000  g/dL        
+    PLT      =     140.0000  x10^3/uL    
+    PDW      =      97.0000  fL           <-- FLAGGED
+    PCT      =       0.1100  %           
+
+  FLAG DETAILS:
+    Column  : PDW (fL)
+    Value   : 97.0
+    Bounds  : [7.0, 40.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: PDW=97.0 fL. PDW above 40 is highly unusual. PDW=97 fL appears to be a data-entry error but the correct value cannot be recovered from this dataset.
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD 12 of 29  |  CSV Row: 273  |  DataFrame Index: 271  |  Overall Category: B
+  Diagnosis: Normocytic normochromic anemia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =      10.9000  x10^3/uL    
+    LYMp     =      11.9000  %           
+    NEUTp    =      79.5000  %           
+    LYMn     =       1.2000  x10^3/uL    
+    NEUTn    =       3.4000  x10^3/uL    
+    RBC      =       4.8900  x10^6/uL    
+    HGB      =      14.5000  g/dL        
+    HCT      =      14.0000  %           
+    MCV      =      91.2000  fL          
+    MCH      =      90.0000  pg           <-- FLAGGED
+    MCHC     =      32.9000  g/dL        
+    PLT      =      45.0000  x10^3/uL    
+    PDW      =      21.8000  fL          
+    PCT      =       0.0500  %           
+
+  FLAG DETAILS:
+    Column  : MCH (pg)
+    Value   : 90.0
+    Bounds  : [10.0, 50.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: MCH=90.0 pg. Normal range is 27–33 pg; upper clinical limit ~45 pg. Values like 275 are ~10× the maximum. Likely a ×10 unit error, but unverifiable here.
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD 13 of 29  |  CSV Row: 274  |  DataFrame Index: 272  |  Overall Category: B
+  Diagnosis: Healthy
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =       9.6000  x10^3/uL    
+    LYMp     =      14.5000  %           
+    NEUTp    =      80.6000  %           
+    LYMn     =       1.4000  x10^3/uL    
+    NEUTn    =       7.7000  x10^3/uL    
+    RBC      =       5.1300  x10^6/uL    
+    HGB      =      14.6000  g/dL        
+    HCT      =      44.5000  %           
+    MCV      =      86.8000  fL          
+    MCH      =      28.4000  pg          
+    MCHC     =      92.8000  g/dL         <-- FLAGGED
+    PLT      =     230.0000  x10^3/uL    
+    PDW      =      11.5000  fL          
+    PCT      =       0.2000  %           
+
+  FLAG DETAILS:
+    Column  : MCHC (g/dL)
+    Value   : 92.8
+    Bounds  : [15.0, 45.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: MCHC=92.8 g/dL. Values above 40 are clinically rare (hyperchromia); above 50 virtually never occur physiologically. Likely a data-entry error, but unverifiable from this dataset.
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD 14 of 29  |  CSV Row: 275  |  DataFrame Index: 273  |  Overall Category: B
+  Diagnosis: Normocytic hypochromic anemia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =       7.1000  x10^3/uL    
+    LYMp     =      11.2000  %           
+    NEUTp    =      59.0000  %           
+    LYMn     =       1.2000  x10^3/uL    
+    NEUTn    =       3.0000  x10^3/uL    
+    RBC      =      90.8000  x10^6/uL     <-- FLAGGED
+    HGB      =      12.6000  g/dL        
+    HCT      =      39.4000  %           
+    MCV      =      83.3000  fL          
+    MCH      =      26.5000  pg          
+    MCHC     =      31.9000  g/dL        
+    PLT      =     124.0000  x10^3/uL    
+    PDW      =      12.0000  fL          
+    PCT      =       0.1100  %           
+
+  FLAG DETAILS:
+    Column  : RBC (x10^6/uL)
+    Value   : 90.8
+    Bounds  : [1.0, 10.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: RBC=90.80 x10^6/uL. The maximum physiologically plausible value is ~9–10. Values like 29.7, 41.1, 90.8 are likely unit errors (e.g., recorded as x10^4 instead of x10^6) but this cannot be verified from the CSV alone.
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD 15 of 29  |  CSV Row: 346  |  DataFrame Index: 344  |  Overall Category: A
+  Diagnosis: Iron deficiency anemia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =       3.2000  x10^3/uL    
+    LYMp     =      43.5000  %           
+    NEUTp    =      49.1000  %           
+    LYMn     =       1.4000  x10^3/uL    
+    NEUTn    =       1.6000  x10^3/uL    
+    RBC      =       5.1200  x10^6/uL    
+    HGB      =      11.9000  g/dL        
+    HCT      =      40.6000  %           
+    MCV      =     -79.3000  fL           <-- FLAGGED
+    MCH      =      23.2000  pg          
+    MCHC     =      29.3000  g/dL        
+    PLT      =     161.0000  x10^3/uL    
+    PDW      =      15.9000  fL          
+    PCT      =       0.1700  %           
+
+  FLAG DETAILS:
+    Column  : MCV (fL)
+    Value   : -79.3
+    Bounds  : [30.0, 150.0]
+    Issue   : below minimum
+    Category: A
+    Rationale: MCV=-79.3 fL. Cell volume cannot be negative. This is a data-entry error.
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD 16 of 29  |  CSV Row: 347  |  DataFrame Index: 345  |  Overall Category: B
+  Diagnosis: Iron deficiency anemia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =      45.7000  x10^3/uL    
+    LYMp     =      91.4000  %           
+    NEUTp    =       7.6000  %           
+    LYMn     =      41.8000  x10^3/uL     <-- FLAGGED
+    NEUTn    =       4.0000  x10^3/uL    
+    RBC      =       5.1900  x10^6/uL    
+    HGB      =       9.8000  g/dL        
+    HCT      =      33.5000  %           
+    MCV      =      64.7000  fL          
+    MCH      =      18.8000  pg          
+    MCHC     =      29.2000  g/dL        
+    PLT      =     213.0000  x10^3/uL    
+    PDW      =      13.1000  fL          
+    PCT      =       0.2100  %           
+
+  FLAG DETAILS:
+    Column  : LYMn (x10^3/uL)
+    Value   : 41.8
+    Bounds  : [0.05, 20.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: LYMn=41.800 x10^3/uL. Extreme lymphocytosis (>20) can occur in CLL but values like 41.8 are rare. Cannot confirm or rule out from this dataset alone.
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD 17 of 29  |  CSV Row: 353  |  DataFrame Index: 351  |  Overall Category: B
+  Diagnosis: Normocytic hypochromic anemia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =       5.0000  x10^3/uL    
+    LYMp     =      37.1000  %           
+    NEUTp    =      56.3000  %           
+    LYMn     =       1.9000  x10^3/uL    
+    NEUTn    =       2.8000  x10^3/uL    
+    RBC      =       4.9300  x10^6/uL    
+    HGB      =      11.9000  g/dL        
+    HCT      =      39.4000  %           
+    MCV      =      80.0000  fL          
+    MCH      =     241.0000  pg           <-- FLAGGED
+    MCHC     =      30.2000  g/dL        
+    PLT      =     240.0000  x10^3/uL    
+    PDW      =      12.8000  fL          
+    PCT      =       0.2200  %           
+
+  FLAG DETAILS:
+    Column  : MCH (pg)
+    Value   : 241.0
+    Bounds  : [10.0, 50.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: MCH=241.0 pg. Normal range is 27–33 pg; upper clinical limit ~45 pg. Values like 275 are ~10× the maximum. Likely a ×10 unit error, but unverifiable here.
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD 18 of 29  |  CSV Row: 358  |  DataFrame Index: 356  |  Overall Category: B
+  Diagnosis: Thrombocytopenia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =       6.2000  x10^3/uL    
+    LYMp     =      33.6000  %           
+    NEUTp    =      58.6000  %           
+    LYMn     =       2.1000  x10^3/uL    
+    NEUTn    =       3.6000  x10^3/uL    
+    RBC      =       4.7300  x10^6/uL    
+    HGB      =      13.2000  g/dL        
+    HCT      =      41.6000  %           
+    MCV      =     990.0000  fL           <-- FLAGGED
+    MCH      =      27.9000  pg          
+    MCHC     =      31.7000  g/dL        
+    PLT      =     145.0000  x10^3/uL    
+    PDW      =      13.6000  fL          
+    PCT      =       0.1300  %           
+
+  FLAG DETAILS:
+    Column  : MCV (fL)
+    Value   : 990.0
+    Bounds  : [30.0, 150.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: MCV=990.0 fL. Clinical maximum is ~130 fL even in severe macrocytosis. This appears to be a data-entry error, but the correct value cannot be inferred here.
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD 19 of 29  |  CSV Row: 377  |  DataFrame Index: 375  |  Overall Category: A
+  Diagnosis: Iron deficiency anemia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =      14.3000  x10^3/uL    
+    LYMp     =      18.9000  %           
+    NEUTp    =      72.0000  %           
+    LYMn     =       2.7000  x10^3/uL    
+    NEUTn    =      10.3000  x10^3/uL    
+    RBC      =       4.7700  x10^6/uL    
+    HGB      =       9.8000  g/dL        
+    HCT      =     741.0000  %            <-- FLAGGED
+    MCV      =      71.6000  fL          
+    MCH      =      20.5000  pg          
+    MCHC     =      28.7000  g/dL        
+    PLT      =     259.0000  x10^3/uL    
+    PDW      =      15.6000  fL          
+    PCT      =       0.2700  %           
+
+  FLAG DETAILS:
+    Column  : HCT (%)
+    Value   : 741.0
+    Bounds  : [5.0, 75.0]
+    Issue   : above maximum
+    Category: A
+    Rationale: HCT=741.0. Haematocrit is a percentage; values above 100% are physically impossible. Likely a data-entry or unit error (e.g., multiplied by 10 or 100).
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD 20 of 29  |  CSV Row: 385  |  DataFrame Index: 383  |  Overall Category: A
+  Diagnosis: Healthy
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =       6.1000  x10^3/uL    
+    LYMp     =      24.1000  %           
+    NEUTp    =     671.0000  %            <-- FLAGGED
+    LYMn     =       5.1000  x10^3/uL    
+    NEUTn    =       4.1000  x10^3/uL    
+    RBC      =       5.5300  x10^6/uL    
+    HGB      =      14.4000  g/dL        
+    HCT      =      46.1000  %           
+    MCV      =      83.5000  fL          
+    MCH      =      26.0000  pg          
+    MCHC     =      31.2000  g/dL        
+    PLT      =     151.0000  x10^3/uL    
+    PDW      =      15.1000  fL          
+    PCT      =       0.1500  %           
+
+  FLAG DETAILS:
+    Column  : NEUTp (%)
+    Value   : 671.0
+    Bounds  : [0.5, 100.0]
+    Issue   : above maximum
+    Category: A
+    Rationale: NEUTp=671.0. Neutrophil percentage cannot exceed 100%. This is likely a data-entry error (possibly raw count entered instead of percentage).
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD 21 of 29  |  CSV Row: 386  |  DataFrame Index: 384  |  Overall Category: B
+  Diagnosis: Other microcytic anemia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =       6.5000  x10^3/uL    
+    LYMp     =      13.5000  %           
+    NEUTp    =      78.5000  %           
+    LYMn     =       0.9000  x10^3/uL    
+    NEUTn    =       0.5000  x10^3/uL    
+    RBC      =       5.1000  x10^6/uL    
+    HGB      =       5.2900  g/dL        
+    HCT      =      14.9000  %           
+    MCV      =      46.6000  fL          
+    MCH      =      88.2000  pg           <-- FLAGGED
+    MCHC     =      28.1000  g/dL        
+    PLT      =      11.4000  x10^3/uL    
+    PDW      =       9.8000  fL          
+    PCT      =      13.6000  %            <-- FLAGGED
+
+  FLAG DETAILS:
+    Column  : MCH (pg)
+    Value   : 88.2
+    Bounds  : [10.0, 50.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: MCH=88.2 pg. Normal range is 27–33 pg; upper clinical limit ~45 pg. Values like 275 are ~10× the maximum. Likely a ×10 unit error, but unverifiable here.
+
+    Column  : PCT (%)
+    Value   : 13.6
+    Bounds  : [0.005, 5.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: PCT=13.6%. Plateletcrit above 5% is extreme. Typical range is 0.1–0.5%. These values (11–14%) are likely data-entry errors but cannot be confirmed.
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD 22 of 29  |  CSV Row: 406  |  DataFrame Index: 404  |  Overall Category: B
+  Diagnosis: Thrombocytopenia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =       3.8000  x10^3/uL    
+    LYMp     =      36.6000  %           
+    NEUTp    =      54.7000  %           
+    LYMn     =       1.4000  x10^3/uL    
+    NEUTn    =       2.1000  x10^3/uL    
+    RBC      =      10.9000  x10^6/uL     <-- FLAGGED
+    HGB      =      35.2000  g/dL         <-- FLAGGED
+    HCT      =      81.2000  %            <-- FLAGGED
+    MCV      =      25.1000  fL           <-- FLAGGED
+    MCH      =      10.9000  pg          
+    MCHC     =      30.9000  g/dL        
+    PLT      =     119.0000  x10^3/uL    
+    PDW      =      17.9000  fL          
+    PCT      =       0.1200  %           
+
+  FLAG DETAILS:
+    Column  : RBC (x10^6/uL)
+    Value   : 10.9
+    Bounds  : [1.0, 10.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: RBC=10.9 is outside expected range [1.0, 10.0] x10^6/uL. Classification requires further domain investigation.
+
+    Column  : HGB (g/dL)
+    Value   : 35.2
+    Bounds  : [0.0, 25.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: HGB=35.2 g/dL. The highest reliably reported HGB is ~23 g/dL. Values of 41, 85, 87 are likely data-entry or unit errors but cannot be confirmed from this dataset.
+
+    Column  : HCT (%)
+    Value   : 81.2
+    Bounds  : [5.0, 75.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: HCT=81.2 is outside expected range [5.0, 75.0] %. Classification requires further domain investigation.
+
+    Column  : MCV (fL)
+    Value   : 25.1
+    Bounds  : [30.0, 150.0]
+    Issue   : below minimum
+    Category: C
+    Rationale: MCV=25.1 fL. Extremely low; could represent severe microcytosis or thalassaemia. Unusual but not physically impossible. Keep and investigate.
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD 23 of 29  |  CSV Row: 440  |  DataFrame Index: 438  |  Overall Category: B
+  Diagnosis: Normocytic normochromic anemia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =       4.2000  x10^3/uL    
+    LYMp     =       9.5000  %           
+    NEUTp    =      84.7000  %           
+    LYMn     =       0.4000  x10^3/uL    
+    NEUTn    =       3.6000  x10^3/uL    
+    RBC      =       3.3400  x10^6/uL    
+    HGB      =       9.2000  g/dL        
+    HCT      =      28.4000  %           
+    MCV      =      85.3000  fL          
+    MCH      =     275.0000  pg           <-- FLAGGED
+    MCHC     =      32.3000  g/dL        
+    PLT      =     107.0000  x10^3/uL    
+    PDW      =      13.1000  fL          
+    PCT      =       0.1000  %           
+
+  FLAG DETAILS:
+    Column  : MCH (pg)
+    Value   : 275.0
+    Bounds  : [10.0, 50.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: MCH=275.0 pg. Normal range is 27–33 pg; upper clinical limit ~45 pg. Values like 275 are ~10× the maximum. Likely a ×10 unit error, but unverifiable here.
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD 24 of 29  |  CSV Row: 448  |  DataFrame Index: 446  |  Overall Category: B
+  Diagnosis: Other microcytic anemia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =      22.2000  x10^3/uL    
+    LYMp     =       9.6000  %           
+    NEUTp    =       0.7000  %           
+    LYMn     =       5.0000  x10^3/uL    
+    NEUTn    =       9.0000  x10^3/uL    
+    RBC      =      29.7000  x10^6/uL     <-- FLAGGED
+    HGB      =      87.1000  g/dL         <-- FLAGGED
+    HCT      =      26.3000  %           
+    MCV      =      30.3000  fL          
+    MCH      =      35.3000  pg          
+    MCHC     =      11.5000  g/dL         <-- FLAGGED
+    PLT      =      11.3000  x10^3/uL    
+    PDW      =      18.7000  fL          
+    PCT      =       0.1300  %           
+
+  FLAG DETAILS:
+    Column  : RBC (x10^6/uL)
+    Value   : 29.7
+    Bounds  : [1.0, 10.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: RBC=29.70 x10^6/uL. The maximum physiologically plausible value is ~9–10. Values like 29.7, 41.1, 90.8 are likely unit errors (e.g., recorded as x10^4 instead of x10^6) but this cannot be verified from the CSV alone.
+
+    Column  : HGB (g/dL)
+    Value   : 87.1
+    Bounds  : [0.0, 25.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: HGB=87.1 g/dL. The highest reliably reported HGB is ~23 g/dL. Values of 41, 85, 87 are likely data-entry or unit errors but cannot be confirmed from this dataset.
+
+    Column  : MCHC (g/dL)
+    Value   : 11.5
+    Bounds  : [15.0, 45.0]
+    Issue   : below minimum
+    Category: C
+    Rationale: MCHC=11.5 g/dL. Very low; possible in severe hypochromic anaemia. No direct evidence of an error.
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD 25 of 29  |  CSV Row: 455  |  DataFrame Index: 453  |  Overall Category: B
+  Diagnosis: Normocytic hypochromic anemia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =       2.7000  x10^3/uL    
+    LYMp     =      43.4000  %           
+    NEUTp    =       1.2000  %           
+    LYMn     =       0.2000  x10^3/uL    
+    NEUTn    =       4.7700  x10^3/uL    
+    RBC      =      13.1000  x10^6/uL     <-- FLAGGED
+    HGB      =      41.0000  g/dL         <-- FLAGGED
+    HCT      =       2.0000  %            <-- FLAGGED
+    MCV      =      86.4000  fL          
+    MCH      =      27.4000  pg          
+    MCHC     =      31.7000  g/dL        
+    PLT      =     169.0000  x10^3/uL    
+    PDW      =      14.3000  fL          
+    PCT      =       0.1700  %           
+
+  FLAG DETAILS:
+    Column  : RBC (x10^6/uL)
+    Value   : 13.1
+    Bounds  : [1.0, 10.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: RBC=13.1 is outside expected range [1.0, 10.0] x10^6/uL. Classification requires further domain investigation.
+
+    Column  : HGB (g/dL)
+    Value   : 41.0
+    Bounds  : [0.0, 25.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: HGB=41.0 g/dL. The highest reliably reported HGB is ~23 g/dL. Values of 41, 85, 87 are likely data-entry or unit errors but cannot be confirmed from this dataset.
+
+    Column  : HCT (%)
+    Value   : 2.0
+    Bounds  : [5.0, 75.0]
+    Issue   : below minimum
+    Category: B
+    Rationale: HCT=2.0 is outside expected range [5.0, 75.0] %. Classification requires further domain investigation.
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD 26 of 29  |  CSV Row: 467  |  DataFrame Index: 465  |  Overall Category: A
+  Diagnosis: Normocytic normochromic anemia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =       7.2000  x10^3/uL    
+    LYMp     =      21.0000  %           
+    NEUTp    =      69.4000  %           
+    LYMn     =       1.5000  x10^3/uL    
+    NEUTn    =       5.0000  x10^3/uL    
+    RBC      =       3.5600  x10^6/uL    
+    HGB      =      11.3000  g/dL        
+    HCT      =      34.8000  %           
+    MCV      =      96.6000  fL          
+    MCH      =    3117.0000  pg           <-- FLAGGED
+    MCHC     =      32.9100  g/dL        
+    PLT      =     192.0000  x10^3/uL    
+    PDW      =      14.6000  fL          
+    PCT      =       0.1800  %           
+
+  FLAG DETAILS:
+    Column  : MCH (pg)
+    Value   : 3117.0
+    Bounds  : [10.0, 50.0]
+    Issue   : above maximum
+    Category: A
+    Rationale: MCH=3117.0 pg. The physiological maximum is ~45 pg. Values like 2511 or 3117 are 75–95× the maximum. This is almost certainly a data-entry error (e.g., extra digits).
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD 27 of 29  |  CSV Row: 474  |  DataFrame Index: 472  |  Overall Category: A
+  Diagnosis: Normocytic hypochromic anemia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =       6.1000  x10^3/uL    
+    LYMp     =      32.2000  %           
+    NEUTp    =      61.3000  %           
+    LYMn     =       2.0000  x10^3/uL    
+    NEUTn    =      13.7000  x10^3/uL    
+    RBC      =       4.6200  x10^6/uL    
+    HGB      =      11.6000  g/dL        
+    HCT      =    3715.0000  %            <-- FLAGGED
+    MCV      =      81.2700  fL          
+    MCH      =    2511.0000  pg           <-- FLAGGED
+    MCHC     =      30.9000  g/dL        
+    PLT      =      94.0000  x10^3/uL    
+    PDW      =      22.8000  fL          
+    PCT      =       0.1000  %           
+
+  FLAG DETAILS:
+    Column  : HCT (%)
+    Value   : 3715.0
+    Bounds  : [5.0, 75.0]
+    Issue   : above maximum
+    Category: A
+    Rationale: HCT=3715.0. Haematocrit is a percentage; values above 100% are physically impossible. Likely a data-entry or unit error (e.g., multiplied by 10 or 100).
+
+    Column  : MCH (pg)
+    Value   : 2511.0
+    Bounds  : [10.0, 50.0]
+    Issue   : above maximum
+    Category: A
+    Rationale: MCH=2511.0 pg. The physiological maximum is ~45 pg. Values like 2511 or 3117 are 75–95× the maximum. This is almost certainly a data-entry error (e.g., extra digits).
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD 28 of 29  |  CSV Row: 475  |  DataFrame Index: 473  |  Overall Category: B
+  Diagnosis: Normocytic hypochromic anemia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =       3.8000  x10^3/uL    
+    LYMp     =      15.2000  %           
+    NEUTp    =      74.8000  %           
+    LYMn     =       0.6000  x10^3/uL    
+    NEUTn    =       2.8000  x10^3/uL    
+    RBC      =       4.4600  x10^6/uL    
+    HGB      =      12.5000  g/dL        
+    HCT      =      39.2000  %           
+    MCV      =      88.1000  fL          
+    MCH      =      28.0000  pg          
+    MCHC     =      31.8000  g/dL        
+    PLT      =     127.0000  x10^3/uL    
+    PDW      =      12.8000  fL          
+    PCT      =      12.0000  %            <-- FLAGGED
+
+  FLAG DETAILS:
+    Column  : PCT (%)
+    Value   : 12.0
+    Bounds  : [0.005, 5.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: PCT=12.0%. Plateletcrit above 5% is extreme. Typical range is 0.1–0.5%. These values (11–14%) are likely data-entry errors but cannot be confirmed.
+
+
+──────────────────────────────────────────────────────────────────────────────
+  RECORD 29 of 29  |  CSV Row: 1136  |  DataFrame Index: 1134  |  Overall Category: B
+  Diagnosis: Other microcytic anemia
+──────────────────────────────────────────────────────────────────────────────
+
+  ALL 14 CBC FEATURE VALUES:
+    WBC      =      16.2000  x10^3/uL    
+    LYMp     =      25.8450  %           
+    NEUTp    =      77.5110  %           
+    LYMn     =       1.8808  x10^3/uL    
+    NEUTn    =       5.1409  x10^3/uL    
+    RBC      =       2.2600  x10^6/uL    
+    HGB      =       8.4000  g/dL        
+    HCT      =      46.1526  %           
+    MCV      =      73.8000  fL          
+    MCH      =      37.1000  pg          
+    MCHC     =      50.2000  g/dL         <-- FLAGGED
+    PLT      =     181.0000  x10^3/uL    
+    PDW      =      14.3125  fL          
+    PCT      =       0.2603  %           
+
+  FLAG DETAILS:
+    Column  : MCHC (g/dL)
+    Value   : 50.2
+    Bounds  : [15.0, 45.0]
+    Issue   : above maximum
+    Category: B
+    Rationale: MCHC=50.2 g/dL. Values above 40 are clinically rare (hyperchromia); above 50 virtually never occur physiologically. Likely a data-entry error, but unverifiable from this dataset.
+
+
+==============================================================================
+SUMMARY BY CATEGORY
+==============================================================================
+
+  Category A (Demonstrably invalid)   :  8 rows
+  Category B (Suspicious/unverifiable): 21 rows
+  Category C (Extreme but plausible)  :  0 rows
+  Total flagged rows                  : 29
+
+  (Rows can appear in only one category — the worst flag determines
+   the row's category. A row with one A-flag and one C-flag = Category A.)
+
+==============================================================================
+PROPOSED HANDLING POLICY
+==============================================================================
+
+CATEGORY A — Demonstrably Invalid
+  These rows contain values that are physically or logically impossible.
+  The correct value cannot be recovered from the CSV alone.
+  Proposed action: EXCLUDE from model training with full documentation.
+  Exclusion criteria:
+    - HGB < 0 (negative haemoglobin)
+    - NEUTp > 100 (percentage exceeds 100%)
+    - HCT > 100 (percentage exceeds 100%)
+    - MCV < 0 (negative cell volume)
+    - MCH > 500 (100× physiological maximum)
+
+CATEGORY B — Suspicious / Unverifiable
+  These rows have extreme values that are likely wrong, but the
+  original correct value cannot be established from this dataset.
+  Proposed action: RETAIN in Scenario 1 (conservative).
+                   EXCLUDE in Scenario 2 (aggressive) for sensitivity.
+
+CATEGORY C — Extreme but Possibly Genuine
+  These rows have values outside the flagging bounds but within
+  plausible pathological ranges. No reliable evidence of error.
+  Proposed action: RETAIN in both scenarios.
+
+==============================================================================
+PREPROCESSING SENSITIVITY ANALYSIS SCENARIOS
+==============================================================================
+
+Scenario 1 — Conservative (baseline)
+  - Remove 49 exact duplicate rows (all scenarios).
+  - Exclude ONLY Category A rows (demonstrably invalid values).
+  - Retain all Category B and C rows.
+  - Document counts for each task (A multiclass, B binary screening).
+
+Scenario 2 — Aggressive exclusion (sensitivity test)
+  - Remove 49 exact duplicate rows (all scenarios).
+  - Exclude Category A rows (same as Scenario 1).
+  - ALSO exclude Category B rows (suspicious, unverifiable).
+  - Retain only Category C rows alongside clean data.
+  - Document counts for each task.
+  - Train identical models on both scenarios and compare performance.
+  - If results are substantially different, report both honestly.
+  - If results are similar, the suspicious rows are not driving outcomes.
+
+IMPORTANT: Train/test split happens AFTER all row-level exclusions.
+           No test-set information is used to decide exclusions.
+           Exclusion decisions are based solely on value impossibility,
+           not on model performance or test accuracy.
+
+==============================================================================
+SAMPLE COUNTS AFTER EACH SCENARIO (estimated, before split)
+==============================================================================
+
+  Original dataset                        : 1281 rows
+  After removing 49 duplicates            : 1232 rows
+  Category A rows (in deduped set)        : 8 rows
+  Category B rows (in deduped set)        : 21 rows
+
+  Scenario 1 (remove duplicates + Cat-A)  : ~1224 rows
+  Scenario 2 (remove duplicates + Cat-A+B): ~1203 rows
+
+  For Task B (binary screening), an additional ~131 rows are
+  excluded (Leukemia, Leukemia+thrombocytopenia, Thrombocytopenia).
+  These counts are computed from the Task A dataset above.
+
+==============================================================================
+END OF SUSPICIOUS RECORD REVIEW REPORT
+==============================================================================

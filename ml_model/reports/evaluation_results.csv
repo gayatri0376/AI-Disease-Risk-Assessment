@@ -1,0 +1,13 @@
+Task,Scenario,Model,Train Rows,Test Rows,CV Macro F1,Test Accuracy,Balanced Acc,Macro F1,Weighted F1,Log Loss,Sensitivity/Recall,Specificity,ROC-AUC,PR-AUC,Tuned Threshold
+Task A (Multiclass),scenario1,logistic_regression,983,241,0.659,0.7178,0.7134,0.6541,0.728,1.0006,,,,,
+Task A (Multiclass),scenario1,decision_tree,983,241,0.9653,0.9917,0.9858,0.9858,0.9917,0.2991,,,,,
+Task A (Multiclass),scenario1,random_forest,983,241,0.9411,0.9668,0.9389,0.9262,0.9686,0.2016,,,,,
+Task A (Multiclass),scenario2,logistic_regression,962,241,0.7319,0.7925,0.7915,0.7217,0.7994,0.5958,,,,,
+Task A (Multiclass),scenario2,decision_tree,962,241,0.9678,0.9751,0.9686,0.9689,0.975,0.7514,,,,,
+Task A (Multiclass),scenario2,random_forest,962,241,0.9559,0.9502,0.9218,0.9135,0.952,0.2047,,,,,
+Task B (Binary),scenario1,logistic_regression,881,216,,0.9259,0.9021,,,,0.9605,0.8438,0.9616,0.9819,0.39
+Task B (Binary),scenario1,decision_tree,881,216,,1.0,1.0,,,,1.0,1.0,1.0,1.0,0.1
+Task B (Binary),scenario1,random_forest,881,216,,1.0,1.0,,,,1.0,1.0,1.0,1.0,0.41
+Task B (Binary),scenario2,logistic_regression,864,216,,0.9815,0.9688,,,,1.0,0.9375,0.9974,0.9989,0.34
+Task B (Binary),scenario2,decision_tree,864,216,,1.0,1.0,,,,1.0,1.0,1.0,1.0,0.1
+Task B (Binary),scenario2,random_forest,864,216,,1.0,1.0,,,,1.0,1.0,1.0,1.0,0.37

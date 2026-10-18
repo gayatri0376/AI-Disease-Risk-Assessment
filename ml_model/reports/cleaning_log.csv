@@ -1,0 +1,88 @@
+step,original_df_index,csv_row_number,diagnosis,offending_feature,offending_value,reason,scenario,category
+deduplication,202,204,Normocytic hypochromic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,215,217,Normocytic hypochromic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,247,249,Normocytic hypochromic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,269,271,Normocytic hypochromic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,405,407,Normocytic normochromic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,406,408,Iron deficiency anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,407,409,Normocytic hypochromic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,411,413,Normocytic normochromic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,439,441,Iron deficiency anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,441,443,Thrombocytopenia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,442,444,Normocytic hypochromic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,445,447,Normocytic normochromic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,466,468,Normocytic normochromic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,467,469,Iron deficiency anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,474,476,Leukemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,603,605,Healthy,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,708,710,Normocytic normochromic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,722,724,Normocytic normochromic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,759,761,Normocytic normochromic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,762,764,Healthy,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,770,772,Healthy,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,778,780,Healthy,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,799,801,Healthy,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,824,826,Normocytic normochromic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,860,862,Other microcytic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,874,876,Normocytic normochromic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,880,882,Normocytic normochromic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,884,886,Healthy,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,889,891,Other microcytic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,891,893,Normocytic normochromic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,896,898,Normocytic normochromic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,897,899,Healthy,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,901,903,Healthy,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,902,904,Healthy,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,903,905,Healthy,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,904,906,Healthy,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,907,909,Normocytic normochromic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,934,936,Normocytic hypochromic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,951,953,Macrocytic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,952,954,Iron deficiency anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,982,984,Normocytic hypochromic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,1017,1019,Iron deficiency anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,1056,1058,Healthy,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,1057,1059,Normocytic normochromic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,1067,1069,Macrocytic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,1068,1070,Healthy,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,1147,1149,Other microcytic anemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,1161,1163,Leukemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+deduplication,1162,1164,Leukemia,ALL (exact duplicate),ALL,Exact duplicate of an earlier row. Removed to prevent data leakage across train/test split.,both,
+record_exclusion_scenario1,4,6,Normocytic hypochromic anemia,HCT,316.0,HCT = 316.0%. Haematocrit is a percentage; values above 100% are physically impossible. This is a data-entry or unit error.,scenario1,A
+record_exclusion_scenario1,216,218,Normocytic hypochromic anemia,NEUTp,5317.0,NEUTp = 5317.0%. Neutrophil percentage cannot exceed 100%. A raw count may have been entered instead of a percentage.,scenario1,A
+record_exclusion_scenario1,245,247,Iron deficiency anemia,HGB,-10.0,HGB = -10.0 g/dL. Haemoglobin concentration cannot be negative. This is physically impossible.,scenario1,A
+record_exclusion_scenario1,344,346,Iron deficiency anemia,MCV,-79.3,MCV = -79.3 fL. Cell volume cannot be negative. This is a data-entry error.,scenario1,A
+record_exclusion_scenario1,375,377,Iron deficiency anemia,HCT,741.0,HCT = 741.0%. Haematocrit is a percentage; values above 100% are physically impossible.,scenario1,A
+record_exclusion_scenario1,383,385,Healthy,NEUTp,671.0,NEUTp = 671.0%. Neutrophil percentage cannot exceed 100%. A raw count may have been entered instead of a percentage.,scenario1,A
+record_exclusion_scenario1,465,467,Normocytic normochromic anemia,MCH,3117.0,MCH = 3117.0 pg. Physiological maximum is ~45 pg. This value is ~95x the maximum and is certainly a data-entry error.,scenario1,A
+record_exclusion_scenario1,472,474,Normocytic hypochromic anemia,HCT; MCH,3715.0; 2511.0,HCT = 3715.0% (impossible percentage) AND MCH = 2511.0 pg (~78x physiological maximum). Multiple impossible values. This record cannot be corrected without the original source data.,scenario1,A
+record_16_flagged_for_review,345,347,Iron deficiency anemia,LYMn; WBC; LYMp,LYMn=41.8; WBC=45.7; LYMp=91.4%,Record 16 kept in Scenario 1 and flagged for clinical review. Not relabeled or excluded solely for extreme lymphocytosis/leukocytosis. Excluded only in Scenario 2 sensitivity analysis as part of verified Category B set.,scenario1,B (retained)
+record_exclusion_scenario2,4,6,Normocytic hypochromic anemia,HCT,316.0,HCT = 316.0%. Haematocrit is a percentage; values above 100% are physically impossible. This is a data-entry or unit error.,scenario2,A
+record_exclusion_scenario2,5,7,Other microcytic anemia,MCHC,79.6,"MCHC = 79.6 g/dL. Clinical hyperchromia rarely exceeds 40 g/dL; >50 g/dL is physiologically implausible. Likely data-entry error, unverifiable.",scenario2,B
+record_exclusion_scenario2,91,93,Normocytic hypochromic anemia,MCHC,61.3,"MCHC = 61.3 g/dL. Exceeds clinical upper limit (~38 g/dL). Likely data-entry error, unverifiable.",scenario2,B
+record_exclusion_scenario2,96,98,Normocytic normochromic anemia,MCHC,61.6,"MCHC = 61.6 g/dL. Exceeds clinical upper limit (~38 g/dL). Likely data-entry error, unverifiable.",scenario2,B
+record_exclusion_scenario2,201,203,Normocytic hypochromic anemia,PCT,11.3,"PCT = 11.3%. Plateletcrit normal range is 0.1-0.5%; values >5% are extreme. Likely data-entry error, unverifiable.",scenario2,B
+record_exclusion_scenario2,206,208,Other microcytic anemia,MCH; PCT,76.0; 12.8,"MCH = 76.0 pg (upper clinical limit ~45 pg) and PCT = 12.8% (extreme). Likely unit/data-entry errors, unverifiable.",scenario2,B
+record_exclusion_scenario2,216,218,Normocytic hypochromic anemia,NEUTp,5317.0,NEUTp = 5317.0%. Neutrophil percentage cannot exceed 100%. A raw count may have been entered instead of a percentage.,scenario2,A
+record_exclusion_scenario2,237,239,Leukemia with thrombocytopenia,NEUTn,79.0,NEUTn = 79.0 x10^3/uL. Extreme neutrophilia (>50 x10^3/uL) is unusual even in severe infection. Associated with leukemia diagnosis; requires review.,scenario2,B
+record_exclusion_scenario2,241,243,Other microcytic anemia,RBC; HGB; MCHC,41.1; 85.1; 12.4,"RBC = 41.1 x10^6/uL (max plausible ~9-10), HGB = 85.1 g/dL (max plausible ~23), MCHC = 12.4 g/dL. Likely unit/data-entry errors, unverifiable.",scenario2,B
+record_exclusion_scenario2,245,247,Iron deficiency anemia,HGB,-10.0,HGB = -10.0 g/dL. Haemoglobin concentration cannot be negative. This is physically impossible.,scenario2,A
+record_exclusion_scenario2,252,254,Thrombocytopenia,PDW,97.0,"PDW = 97.0 fL. PDW above 40 is highly unusual. Appears to be a data-entry error, unverifiable.",scenario2,B
+record_exclusion_scenario2,271,273,Normocytic normochromic anemia,MCH,90.0,"MCH = 90.0 pg. Normal range is 27-33 pg; clinical upper limit ~45 pg. Likely unit/data-entry error, unverifiable.",scenario2,B
+record_exclusion_scenario2,272,274,Healthy,MCHC,92.8,"MCHC = 92.8 g/dL. Severe hyperchromia >50 g/dL does not occur physiologically. Likely data-entry error, unverifiable.",scenario2,B
+record_exclusion_scenario2,273,275,Normocytic hypochromic anemia,RBC,90.8,"RBC = 90.8 x10^6/uL. Maximum physiological RBC count is ~9-10 x10^6/uL. Likely unit error (e.g. x10^4), unverifiable.",scenario2,B
+record_exclusion_scenario2,344,346,Iron deficiency anemia,MCV,-79.3,MCV = -79.3 fL. Cell volume cannot be negative. This is a data-entry error.,scenario2,A
+record_exclusion_scenario2,345,347,Iron deficiency anemia,LYMn; WBC; LYMp,41.8; 45.7; 91.4,"Record 16. LYMn = 41.8 x10^3/uL, WBC = 45.7 x10^3/uL, LYMp = 91.4%. Extreme lymphocytosis in iron deficiency anemia. Kept in Scenario 1 and flagged for review; excluded in Scenario 2 for sensitivity analysis.",scenario2,B
+record_exclusion_scenario2,351,353,Normocytic hypochromic anemia,MCH,241.0,"MCH = 241.0 pg. Upper clinical limit ~45 pg; ~8x expected normal. Likely unit/data-entry error, unverifiable.",scenario2,B
+record_exclusion_scenario2,356,358,Thrombocytopenia,MCV,990.0,"MCV = 990.0 fL. Clinical maximum is ~130 fL even in severe macrocytosis. Likely data-entry error, unverifiable.",scenario2,B
+record_exclusion_scenario2,375,377,Iron deficiency anemia,HCT,741.0,HCT = 741.0%. Haematocrit is a percentage; values above 100% are physically impossible.,scenario2,A
+record_exclusion_scenario2,383,385,Healthy,NEUTp,671.0,NEUTp = 671.0%. Neutrophil percentage cannot exceed 100%. A raw count may have been entered instead of a percentage.,scenario2,A
+record_exclusion_scenario2,384,386,Other microcytic anemia,MCH; PCT,88.2; 13.6,"MCH = 88.2 pg and PCT = 13.6%. Both well above physiological maximums. Likely unit/data-entry errors, unverifiable.",scenario2,B
+record_exclusion_scenario2,404,406,Thrombocytopenia,RBC; HGB; HCT; MCV,10.9; 35.2; 81.2; 25.1,"RBC = 10.9 x10^6/uL, HGB = 35.2 g/dL, HCT = 81.2%, MCV = 25.1 fL. Multiple extreme values outside physiological ranges, unverifiable.",scenario2,B
+record_exclusion_scenario2,438,440,Normocytic normochromic anemia,MCH,275.0,"MCH = 275.0 pg. Upper clinical limit ~45 pg; ~9x normal. Likely unit/data-entry error, unverifiable.",scenario2,B
+record_exclusion_scenario2,446,448,Other microcytic anemia,RBC; HGB; MCHC,29.7; 87.1; 11.5,"RBC = 29.7 x10^6/uL, HGB = 87.1 g/dL, MCHC = 11.5 g/dL. Multiple impossible/extreme values; likely unit errors, unverifiable.",scenario2,B
+record_exclusion_scenario2,453,455,Normocytic hypochromic anemia,RBC; HGB; HCT,13.1; 41.0; 2.0,"RBC = 13.1 x10^6/uL, HGB = 41.0 g/dL, HCT = 2.0%. Extreme values outside reference ranges; likely unit errors, unverifiable.",scenario2,B
+record_exclusion_scenario2,465,467,Normocytic normochromic anemia,MCH,3117.0,MCH = 3117.0 pg. Physiological maximum is ~45 pg. This value is ~95x the maximum and is certainly a data-entry error.,scenario2,A
+record_exclusion_scenario2,472,474,Normocytic hypochromic anemia,HCT; MCH,3715.0; 2511.0,HCT = 3715.0% (impossible percentage) AND MCH = 2511.0 pg (~78x physiological maximum). Multiple impossible values. This record cannot be corrected without the original source data.,scenario2,A
+record_exclusion_scenario2,473,475,Normocytic hypochromic anemia,PCT,12.0,"PCT = 12.0%. Plateletcrit >5% is extreme; typical range 0.1-0.5%. Likely data-entry error, unverifiable.",scenario2,B
+record_exclusion_scenario2,1134,1136,Other microcytic anemia,MCHC,50.2,"MCHC = 50.2 g/dL. Values above 50 g/dL virtually never occur physiologically. Likely data-entry error, unverifiable.",scenario2,B

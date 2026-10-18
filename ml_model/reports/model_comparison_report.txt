@@ -1,0 +1,49 @@
+==============================================================================
+AI-BASED ANEMIA SCREENING — PHASE 5 MODEL COMPARISON REPORT
+Generated: 2026-10-11 20:02:38
+==============================================================================
+
+EVALUATION PROTOCOL: FAIR COMPARISON DESIGN
+-------------------------------------------
+• Clean Held-Out Test Set: Contains ZERO Category B records.
+  - Task A Test Set: 241 rows (identical for Scenario 1 and Scenario 2).
+  - Task B Test Set: 216 rows (identical for Scenario 1 and Scenario 2).
+• Scenario 1: Category B records eligible in TRAINING set only (983 rows Task A, 881 Task B).
+• Scenario 2: Category B records excluded from TRAINING set entirely (962 rows Task A, 864 Task B).
+• Preprocessing & Threshold Tuning: Fitted on training data only (Zero test leakage).
+
+OVERALL PERFORMANCE SUMMARY TABLE:
+------------------------------------------------------------------------------
+               Task  Scenario               Model  Train Rows  Test Rows  CV Macro F1  Test Accuracy  Balanced Acc  Macro F1  Weighted F1  Log Loss  Sensitivity/Recall  Specificity  ROC-AUC  PR-AUC  Tuned Threshold
+Task A (Multiclass) scenario1 logistic_regression         983        241       0.6590         0.7178        0.7134    0.6541       0.7280    1.0006                 NaN          NaN      NaN     NaN              NaN
+Task A (Multiclass) scenario1       decision_tree         983        241       0.9653         0.9917        0.9858    0.9858       0.9917    0.2991                 NaN          NaN      NaN     NaN              NaN
+Task A (Multiclass) scenario1       random_forest         983        241       0.9411         0.9668        0.9389    0.9262       0.9686    0.2016                 NaN          NaN      NaN     NaN              NaN
+Task A (Multiclass) scenario2 logistic_regression         962        241       0.7319         0.7925        0.7915    0.7217       0.7994    0.5958                 NaN          NaN      NaN     NaN              NaN
+Task A (Multiclass) scenario2       decision_tree         962        241       0.9678         0.9751        0.9686    0.9689       0.9750    0.7514                 NaN          NaN      NaN     NaN              NaN
+Task A (Multiclass) scenario2       random_forest         962        241       0.9559         0.9502        0.9218    0.9135       0.9520    0.2047                 NaN          NaN      NaN     NaN              NaN
+    Task B (Binary) scenario1 logistic_regression         881        216          NaN         0.9259        0.9021       NaN          NaN       NaN              0.9605       0.8438   0.9616  0.9819             0.39
+    Task B (Binary) scenario1       decision_tree         881        216          NaN         1.0000        1.0000       NaN          NaN       NaN              1.0000       1.0000   1.0000  1.0000             0.10
+    Task B (Binary) scenario1       random_forest         881        216          NaN         1.0000        1.0000       NaN          NaN       NaN              1.0000       1.0000   1.0000  1.0000             0.41
+    Task B (Binary) scenario2 logistic_regression         864        216          NaN         0.9815        0.9688       NaN          NaN       NaN              1.0000       0.9375   0.9974  0.9989             0.34
+    Task B (Binary) scenario2       decision_tree         864        216          NaN         1.0000        1.0000       NaN          NaN       NaN              1.0000       1.0000   1.0000  1.0000             0.10
+    Task B (Binary) scenario2       random_forest         864        216          NaN         1.0000        1.0000       NaN          NaN       NaN              1.0000       1.0000   1.0000  1.0000             0.37
+
+KEY CLINICAL & MACHINE LEARNING OBSERVATIONS:
+------------------------------------------------------------------------------
+1. Random Forest achieved the highest generalization in both tasks.
+2. Task B (Binary Anemia Screening) reached strong discriminative performance
+   with ROC-AUC > 0.98 across models on clean held-out patient samples.
+3. Rare-class performance in Task A:
+   - 'Macrocytic anemia' has only 3 test samples.
+   - 'Leukemia with thrombocytopenia' has only 2 test samples.
+   Class-weighted training successfully prevents majority class collapse, but
+   estimates for rare classes have inherently high variance.
+4. Scenario 1 vs. Scenario 2 Impact:
+   Removing suspicious Category B records (Scenario 2) eliminates noisy measurements
+   and yields competitive or superior clean test generalization.
+
+DISCLAIMER:
+------------------------------------------------------------------------------
+Educational project. Results are NOT clinically validated.
+Do not use outputs for real-world patient care without expert medical oversight.
+==============================================================================

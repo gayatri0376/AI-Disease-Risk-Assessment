@@ -1,0 +1,295 @@
+======================================================================
+AI-Based Anemia Screening — Phase 3: Exploratory Data Analysis
+Educational project — NOT a clinical diagnostic tool.
+======================================================================
+
+Loading dataset from:
+  ml_model/dataset/anemia_types.csv
+
+Dataset loaded successfully.  Shape: (1281, 15)
+
+======================================================================
+SECTION 1: BASIC DATASET INFORMATION
+======================================================================
+
+Dataset path : ml_model/dataset/anemia_types.csv
+Rows         : 1281
+Columns      : 15
+Feature cols : 14  (all numeric, float64)
+Target col   : 'Diagnosis'  (string labels)
+
+--- Column Names and Data Types ---
+  [ 0] WBC         dtype=float64
+  [ 1] LYMp        dtype=float64
+  [ 2] NEUTp       dtype=float64
+  [ 3] LYMn        dtype=float64
+  [ 4] NEUTn       dtype=float64
+  [ 5] RBC         dtype=float64
+  [ 6] HGB         dtype=float64
+  [ 7] HCT         dtype=float64
+  [ 8] MCV         dtype=float64
+  [ 9] MCH         dtype=float64
+  [10] MCHC        dtype=float64
+  [11] PLT         dtype=float64
+  [12] PDW         dtype=float64
+  [13] PCT         dtype=float64
+  [14] Diagnosis   dtype=str
+
+--- First 5 Rows (sample) ---
+    WBC  LYMp  NEUTp  LYMn  NEUTn   RBC  HGB    HCT   MCV   MCH  MCHC    PLT   PDW   PCT                      Diagnosis
+0  10.0  43.2   50.1   4.3    5.0  2.77  7.3   24.2  87.7  26.3  30.1  189.0  12.5  0.17  Normocytic hypochromic anemia
+1  10.0  42.4   52.3   4.2    5.3  2.84  7.3   25.0  88.2  25.7  20.2  180.0  12.5  0.16  Normocytic hypochromic anemia
+2   7.2  30.7   60.7   2.2    4.4  3.97  9.0   30.5  77.0  22.6  29.5  148.0  14.3  0.14         Iron deficiency anemia
+3   6.0  30.2   63.5   1.8    3.8  4.22  3.8   32.8  77.9  23.2  29.8  143.0  11.3  0.12         Iron deficiency anemia
+4   4.2  39.1   53.7   1.6    2.3  3.93  0.4  316.0  80.6  23.9  29.7  236.0  12.8  0.22  Normocytic hypochromic anemia
+
+--- Last 3 Rows (sample) ---
+       WBC    LYMp   NEUTp     LYMn    NEUTn   RBC   HGB      HCT   MCV   MCH  MCHC    PLT        PDW      PCT Diagnosis
+1278  9.20  25.845  77.511  1.88076  5.14094  4.47  13.1  46.1526  88.7  29.3  33.0  329.0  14.312512  0.26028   Healthy
+1279  6.48  25.845  77.511  1.88076  5.14094  4.75  13.2  46.1526  86.7  27.9  32.1  174.0  14.312512  0.26028   Healthy
+1280  8.80  25.845  77.511  1.88076  5.14094  4.95  15.2  46.1526  89.7  30.6  34.2  279.0  14.312512  0.26028   Healthy
+
+======================================================================
+SECTION 2: MISSING VALUES
+======================================================================
+
+  No missing (NaN) values found in any column.
+  NOTE: This does NOT mean the data is complete.
+  See Section 7 for the LYMp/LYMn pre-imputation finding.
+
+======================================================================
+SECTION 3: DUPLICATE ROW ANALYSIS
+======================================================================
+
+  Extra duplicate copies (to be removed before training): 49
+  Total rows involved in duplicates (incl. originals)   : 92
+  Rows retained after removing duplicates               : 1232
+
+  Duplicates by Diagnosis class:
+    Normocytic normochromic anemia                 25 rows involved
+    Healthy                                        23 rows involved
+    Normocytic hypochromic anemia                  16 rows involved
+    Iron deficiency anemia                         10 rows involved
+    Leukemia                                        6 rows involved
+    Other microcytic anemia                         6 rows involved
+    Macrocytic anemia                               4 rows involved
+    Thrombocytopenia                                2 rows involved
+
+  CLEANING DECISION (approved in Phase 1):
+  - Remove 49 exact duplicate rows BEFORE the train/test split.
+  - Work on a cleaned in-memory copy. Original CSV is untouched.
+  - Reason: duplicates across the split inflate test accuracy
+    by letting the model 'remember' training rows at test time.
+
+======================================================================
+SECTION 4: DIAGNOSIS CLASS DISTRIBUTION
+======================================================================
+
+  Diagnosis                                      Count       %
+  --------------------------------------------- ------  ------
+  Healthy                                          336   26.2%  =============
+  Normocytic hypochromic anemia                    279   21.8%  ==========
+  Normocytic normochromic anemia                   269   21.0%  ==========
+  Iron deficiency anemia                           189   14.8%  =======
+  Thrombocytopenia                                  73    5.7%  ==
+  Other microcytic anemia                           59    4.6%  ==
+  Leukemia                                          47    3.7%  =
+  Macrocytic anemia                                 18    1.4%  
+  Leukemia with thrombocytopenia                    11    0.9%  
+
+  Total records: 1281
+
+  IMBALANCE NOTES:
+  - Top 3 classes account for ~69% of records.
+  - Macrocytic anemia (18 rows) and Leukemia+thrombocytopenia (11 rows)
+    are very rare. Reliable per-class metrics for these are not possible.
+  - We will use class_weight='balanced' where applicable and report
+    macro F1 (all classes equal weight) alongside weighted F1.
+
+======================================================================
+SECTION 5: DESCRIPTIVE STATISTICS (numeric features)
+======================================================================
+
+               WBC         LYMp        NEUTp         LYMn        NEUTn          RBC          HGB        HCT          MCV          MCH         MCHC          PLT          PDW          PCT
+count  1281.000000  1281.000000  1281.000000  1281.000000  1281.000000  1281.000000  1281.000000  1281.0000  1281.000000  1281.000000  1281.000000  1281.000000  1281.000000  1281.000000
+mean      7.862717    25.845000    77.511000     1.880760     5.140940     4.708267    12.184551    46.1526    85.793919    32.084840    31.739149   229.981421    14.312512     0.260280
+std       3.564466     7.038728   147.746273     1.335689     2.872294     2.817200     3.812897   104.8861    27.177663   111.170756     3.300352    93.019336     3.005079     0.685351
+min       0.800000     6.200000     0.700000     0.200000     0.500000     1.360000   -10.000000     2.0000   -79.300000    10.900000    11.500000    10.000000     8.400000     0.010000
+25%       6.000000    25.845000    71.100000     1.880760     5.100000     4.190000    10.800000    39.2000    81.200000    25.500000    30.600000   157.000000    13.300000     0.170000
+50%       7.400000    25.845000    77.511000     1.880760     5.140940     4.600000    12.300000    46.1526    86.600000    27.800000    32.000000   213.000000    14.312512     0.260280
+75%       8.680000    25.845000    77.511000     1.880760     5.140940     5.100000    13.500000    46.1526    90.200000    29.600000    32.900000   293.000000    14.700000     0.260280
+max      45.700000    91.400000  5317.000000    41.800000    79.000000    90.800000    87.100000  3715.0000   990.000000  3117.000000    92.800000   660.000000    97.000000    13.600000
+
+  HOW TO READ THIS TABLE:
+  - count : number of non-null values  (1281 = no NaN)
+  - mean  : average across all patients
+  - std   : how spread out values are (larger = more variation)
+  - min   : smallest recorded value
+  - 25%   : value below which 25% of data falls (Q1)
+  - 50%   : median — the middle value
+  - 75%   : value below which 75% of data falls (Q3)
+  - max   : largest recorded value
+
+======================================================================
+SECTION 6: SUSPICIOUS / IMPOSSIBLE VALUE INVESTIGATION
+======================================================================
+
+  Clinical bounds used for flagging are intentionally wide.
+  Values outside these limits need human review.
+  These rows are NOT deleted — listed here for investigation.
+
+  >> NEUTp (%) — expected range [0.5, 100.0]
+     Note: neutrophil % (max is 100%)
+     Values below 0.5: 0  |  Values above 100.0: 2  |  Total flagged: 2
+     Data range: min=0.700, max=5317.000
+     Row  216: NEUTp=    5317.000   Diagnosis: Normocytic hypochromic anemia
+     Row  383: NEUTp=     671.000   Diagnosis: Healthy
+
+  >> LYMn (x10^3/uL) — expected range [0.05, 20.0]
+     Note: absolute lymphocyte count
+     Values below 0.05: 0  |  Values above 20.0: 1  |  Total flagged: 1
+     Data range: min=0.200, max=41.800
+     Row  345: LYMn=      41.800   Diagnosis: Iron deficiency anemia
+
+  >> NEUTn (x10^3/uL) — expected range [0.1, 50.0]
+     Note: absolute neutrophil count
+     Values below 0.1: 0  |  Values above 50.0: 1  |  Total flagged: 1
+     Data range: min=0.500, max=79.000
+     Row  237: NEUTn=      79.000   Diagnosis: Leukemia with thrombocytopenia
+
+  >> RBC (x10^6/uL) — expected range [1.0, 10.0]
+     Note: red blood cell count
+     Values below 1.0: 0  |  Values above 10.0: 5  |  Total flagged: 5
+     Data range: min=1.360, max=90.800
+     Row  273: RBC=      90.800   Diagnosis: Normocytic hypochromic anemia
+     Row  241: RBC=      41.100   Diagnosis: Other microcytic anemia
+     Row  446: RBC=      29.700   Diagnosis: Other microcytic anemia
+
+  >> HGB (g/dL) — expected range [0.0, 25.0]
+     Note: haemoglobin (cannot be negative)
+     Values below 0.0: 1  |  Values above 25.0: 4  |  Total flagged: 5
+     Data range: min=-10.000, max=87.100
+     Row  245: HGB=     -10.000   Diagnosis: Iron deficiency anemia
+     Row  446: HGB=      87.100   Diagnosis: Other microcytic anemia
+     Row  241: HGB=      85.100   Diagnosis: Other microcytic anemia
+     Row  453: HGB=      41.000   Diagnosis: Normocytic hypochromic anemia
+
+  >> HCT (%) — expected range [5.0, 75.0]
+     Note: haematocrit (cannot exceed 100%)
+     Values below 5.0: 1  |  Values above 75.0: 4  |  Total flagged: 5
+     Data range: min=2.000, max=3715.000
+     Row  453: HCT=       2.000   Diagnosis: Normocytic hypochromic anemia
+     Row  472: HCT=    3715.000   Diagnosis: Normocytic hypochromic anemia
+     Row  375: HCT=     741.000   Diagnosis: Iron deficiency anemia
+     Row    4: HCT=     316.000   Diagnosis: Normocytic hypochromic anemia
+
+  >> MCV (fL) — expected range [30.0, 150.0]
+     Note: mean corpuscular volume
+     Values below 30.0: 2  |  Values above 150.0: 1  |  Total flagged: 3
+     Data range: min=-79.300, max=990.000
+     Row  344: MCV=     -79.300   Diagnosis: Iron deficiency anemia
+     Row  404: MCV=      25.100   Diagnosis: Thrombocytopenia
+     Row  356: MCV=     990.000   Diagnosis: Thrombocytopenia
+
+  >> MCH (pg) — expected range [10.0, 50.0]
+     Note: mean corpuscular haemoglobin
+     Values below 10.0: 0  |  Values above 50.0: 7  |  Total flagged: 7
+     Data range: min=10.900, max=3117.000
+     Row  465: MCH=    3117.000   Diagnosis: Normocytic normochromic anemia
+     Row  472: MCH=    2511.000   Diagnosis: Normocytic hypochromic anemia
+     Row  438: MCH=     275.000   Diagnosis: Normocytic normochromic anemia
+
+  >> MCHC (g/dL) — expected range [15.0, 45.0]
+     Note: mean corpuscular HGB concentration
+     Values below 15.0: 2  |  Values above 45.0: 5  |  Total flagged: 7
+     Data range: min=11.500, max=92.800
+     Row  446: MCHC=      11.500   Diagnosis: Other microcytic anemia
+     Row  241: MCHC=      12.400   Diagnosis: Other microcytic anemia
+     Row  272: MCHC=      92.800   Diagnosis: Healthy
+     Row    5: MCHC=      79.600   Diagnosis: Other microcytic anemia
+     Row   96: MCHC=      61.600   Diagnosis: Normocytic normochromic anemia
+
+  >> PDW (fL) — expected range [7.0, 40.0]
+     Note: platelet distribution width
+     Values below 7.0: 0  |  Values above 40.0: 1  |  Total flagged: 1
+     Data range: min=8.400, max=97.000
+     Row  252: PDW=      97.000   Diagnosis: Thrombocytopenia
+
+  >> PCT (%) — expected range [0.005, 5.0]
+     Note: plateletcrit
+     Values below 0.005: 0  |  Values above 5.0: 4  |  Total flagged: 4
+     Data range: min=0.010, max=13.600
+     Row  384: PCT=      13.600   Diagnosis: Other microcytic anemia
+     Row  206: PCT=      12.800   Diagnosis: Other microcytic anemia
+     Row  473: PCT=      12.000   Diagnosis: Normocytic hypochromic anemia
+
+  SUMMARY: 29 unique rows contain at least
+           one suspicious value across all 14 columns.
+
+  NEXT STEPS (Phase 4 — Preprocessing):
+  1. Investigate each flagged row.
+  2. Correct values ONLY when there is reliable evidence
+     (e.g., NEUTp=5317 is clearly not a valid percentage).
+  3. If a value cannot be verified, document the exclusion decision.
+  4. Run a sensitivity analysis: compare model with vs without
+     the rows containing extreme values.
+
+======================================================================
+SECTION 7: LYMp and LYMn — SUSPECTED PRE-IMPUTATION WARNING
+======================================================================
+
+  LYMp:
+    Most common value (mode) : 25.845
+    Column median            : 25.845
+    Unique values            : 263
+    Rows with mode value     : 781 / 1281 (61.0%)
+    ** WARNING: The most common value IS the column median.
+       This strongly suggests missing values were pre-filled
+       with the median before the CSV was published.
+       The real missing-data signal is lost for 61% of rows.
+
+  LYMn:
+    Most common value (mode) : 1.88076
+    Column median            : 1.88076
+    Unique values            : 51
+    Rows with mode value     : 781 / 1281 (61.0%)
+    ** WARNING: The most common value IS the column median.
+       This strongly suggests missing values were pre-filled
+       with the median before the CSV was published.
+       The real missing-data signal is lost for 61% of rows.
+
+  DECISION (approved in Phase 1):
+  - Keep both features. Do NOT remove or replace their values.
+  - Document this warning in all reports and the project README.
+  - In Phase 5, compare model with and without LYMp/LYMn to
+    measure how much they contribute.
+
+======================================================================
+SECTION 8: SAVING PLOTS TO ml_model/reports/
+======================================================================
+  Saved -> ml_model/reports/diagnosis_distribution.png
+  Saved -> ml_model/reports/feature_boxplots.png
+
+======================================================================
+ANALYSIS COMPLETE — SUMMARY
+======================================================================
+
+  Total records          : 1281
+  Diagnosis classes      : 9
+  Missing values (NaN)   : 0  (but see LYMp/LYMn warning)
+  Exact duplicate rows   : 49 (remove before training)
+  Records after dedup    : 1232
+
+  Files saved in        : ml_model/reports/
+    diagnosis_distribution.png
+    feature_boxplots.png
+    analysis_report.txt
+
+  NEXT STEP: Phase 4 — Implement preprocessing.py
+  (Await review of these findings before proceeding)
+
+  DISCLAIMER: This is an educational screening-support tool.
+  Do not use model outputs for clinical decisions.
+  Consult a qualified healthcare professional for interpretation.
+
+======================================================================

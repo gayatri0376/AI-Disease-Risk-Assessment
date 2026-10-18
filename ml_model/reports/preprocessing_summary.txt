@@ -1,0 +1,194 @@
+========================================================================
+PREPROCESSING SUMMARY — AI-Based Anemia Screening
+Generated : 2026-10-11 22:24:28
+Dataset   : ml_model/dataset/anemia_types.csv
+========================================================================
+
+────────────────────────────────────────────────────────────────────────
+SCENARIO: SCENARIO1
+────────────────────────────────────────────────────────────────────────
+
+  Step 0 — Raw Dataset
+    Rows: 1281  |  Columns: 15
+    Raw Diagnosis Distribution:
+      Healthy                                        336  (26.2%)
+      Normocytic hypochromic anemia                  279  (21.8%)
+      Normocytic normochromic anemia                 269  (21.0%)
+      Iron deficiency anemia                         189  (14.8%)
+      Thrombocytopenia                                73  (5.7%)
+      Other microcytic anemia                         59  (4.6%)
+      Leukemia                                        47  (3.7%)
+      Macrocytic anemia                               18  (1.4%)
+      Leukemia with thrombocytopenia                  11  (0.9%)
+      TOTAL                                         1281
+
+  Step 1 — Deduplication
+    Duplicates removed : 49
+    Rows remaining     : 1232
+    Diagnosis Distribution after Deduplication:
+      Healthy                                        323  (26.2%)
+      Normocytic hypochromic anemia                  271  (22.0%)
+      Normocytic normochromic anemia                 255  (20.7%)
+      Iron deficiency anemia                         184  (14.9%)
+      Thrombocytopenia                                72  (5.8%)
+      Other microcytic anemia                         56  (4.5%)
+      Leukemia                                        44  (3.6%)
+      Macrocytic anemia                               16  (1.3%)
+      Leukemia with thrombocytopenia                  11  (0.9%)
+      TOTAL                                         1232
+
+  Step 2 — Category A exclusions (demonstrably invalid, both scenarios)
+    Records excluded   : 8 (CSV rows 6, 218, 247, 346, 377, 385, 467, 474)
+    Rows remaining     : 1224
+    Diagnosis Distribution after Category A exclusions:
+      Healthy                                        322  (26.3%)
+      Normocytic hypochromic anemia                  268  (21.9%)
+      Normocytic normochromic anemia                 254  (20.8%)
+      Iron deficiency anemia                         181  (14.8%)
+      Thrombocytopenia                                72  (5.9%)
+      Other microcytic anemia                         56  (4.6%)
+      Leukemia                                        44  (3.6%)
+      Macrocytic anemia                               16  (1.3%)
+      Leukemia with thrombocytopenia                  11  (0.9%)
+      TOTAL                                         1224
+
+  Step 3 — Scenario 1 Protocol: Record 16 (CSV row 347, df index 345)
+    Status: RETAINED and flagged for clinical review.
+    Diagnosis: Iron deficiency anemia | WBC=45.7 | LYMp=91.4% | LYMn=41.8
+    Reason: Kept in primary analysis; not relabeled or excluded solely for extreme lymphocytosis.
+
+  TASK A (Multiclass — 9 classes)
+    Total rows for training/testing : 1224
+    Class distribution:
+      Healthy                                        322  (26.3%)
+      Normocytic hypochromic anemia                  268  (21.9%)
+      Normocytic normochromic anemia                 254  (20.8%)
+      Iron deficiency anemia                         181  (14.8%)
+      Thrombocytopenia                                72  (5.9%)
+      Other microcytic anemia                         56  (4.6%)
+      Leukemia                                        44  (3.6%)
+      Macrocytic anemia                               16  (1.3%)
+      Leukemia with thrombocytopenia                  11  (0.9%)
+      TOTAL                                         1224
+    Train rows : 983  |  Test rows : 241
+
+  TASK B (Binary Anemia Screening)
+    Additional exclusions (non-anemia classes): 127
+    Breakdown of excluded non-anemia classes:
+      Leukemia                                      44 rows
+      Leukemia with thrombocytopenia                11 rows
+      Thrombocytopenia                              72 rows
+    Total rows for training/testing : 1097
+    Label distribution:
+      Anemia subtypes (1)                            775  (70.6%)
+      Healthy (0)                                    322  (29.4%)
+      TOTAL                                         1097
+    Train rows : 881  |  Test rows : 216
+
+  DATA QUALITY NOTES:
+    LYMp: 61.0% of rows have mode value 25.845 (suspected pre-imputation).
+    LYMn: 61.0% of rows have mode value 1.88076 (suspected pre-imputation).
+    Both features are kept. This is documented for honest reporting.
+
+────────────────────────────────────────────────────────────────────────
+SCENARIO: SCENARIO2
+────────────────────────────────────────────────────────────────────────
+
+  Step 0 — Raw Dataset
+    Rows: 1281  |  Columns: 15
+    Raw Diagnosis Distribution:
+      Healthy                                        336  (26.2%)
+      Normocytic hypochromic anemia                  279  (21.8%)
+      Normocytic normochromic anemia                 269  (21.0%)
+      Iron deficiency anemia                         189  (14.8%)
+      Thrombocytopenia                                73  (5.7%)
+      Other microcytic anemia                         59  (4.6%)
+      Leukemia                                        47  (3.7%)
+      Macrocytic anemia                               18  (1.4%)
+      Leukemia with thrombocytopenia                  11  (0.9%)
+      TOTAL                                         1281
+
+  Step 1 — Deduplication
+    Duplicates removed : 49
+    Rows remaining     : 1232
+    Diagnosis Distribution after Deduplication:
+      Healthy                                        323  (26.2%)
+      Normocytic hypochromic anemia                  271  (22.0%)
+      Normocytic normochromic anemia                 255  (20.7%)
+      Iron deficiency anemia                         184  (14.9%)
+      Thrombocytopenia                                72  (5.8%)
+      Other microcytic anemia                         56  (4.5%)
+      Leukemia                                        44  (3.6%)
+      Macrocytic anemia                               16  (1.3%)
+      Leukemia with thrombocytopenia                  11  (0.9%)
+      TOTAL                                         1232
+
+  Step 2 — Category A exclusions (demonstrably invalid, both scenarios)
+    Records excluded   : 8 (CSV rows 6, 218, 247, 346, 377, 385, 467, 474)
+    Rows remaining     : 1224
+    Diagnosis Distribution after Category A exclusions:
+      Healthy                                        322  (26.3%)
+      Normocytic hypochromic anemia                  268  (21.9%)
+      Normocytic normochromic anemia                 254  (20.8%)
+      Iron deficiency anemia                         181  (14.8%)
+      Thrombocytopenia                                72  (5.9%)
+      Other microcytic anemia                         56  (4.6%)
+      Leukemia                                        44  (3.6%)
+      Macrocytic anemia                               16  (1.3%)
+      Leukemia with thrombocytopenia                  11  (0.9%)
+      TOTAL                                         1224
+
+  Step 3 — Category B exclusions (suspicious, Scenario 2 sensitivity analysis)
+    Records excluded   : 21 (all 21 verified Category B rows, including Record 16)
+    Rows remaining     : 1203
+    Diagnosis Distribution after Category B exclusions:
+      Healthy                                        321  (26.7%)
+      Normocytic hypochromic anemia                  262  (21.8%)
+      Normocytic normochromic anemia                 251  (20.9%)
+      Iron deficiency anemia                         180  (15.0%)
+      Thrombocytopenia                                69  (5.7%)
+      Other microcytic anemia                         50  (4.2%)
+      Leukemia                                        44  (3.7%)
+      Macrocytic anemia                               16  (1.3%)
+      Leukemia with thrombocytopenia                  10  (0.8%)
+      TOTAL                                         1203
+
+  TASK A (Multiclass — 9 classes)
+    Total rows for training/testing : 1203
+    Class distribution:
+      Healthy                                        321  (26.7%)
+      Normocytic hypochromic anemia                  262  (21.8%)
+      Normocytic normochromic anemia                 251  (20.9%)
+      Iron deficiency anemia                         180  (15.0%)
+      Thrombocytopenia                                69  (5.7%)
+      Other microcytic anemia                         50  (4.2%)
+      Leukemia                                        44  (3.7%)
+      Macrocytic anemia                               16  (1.3%)
+      Leukemia with thrombocytopenia                  10  (0.8%)
+      TOTAL                                         1203
+    Train rows : 962  |  Test rows : 241
+
+  TASK B (Binary Anemia Screening)
+    Additional exclusions (non-anemia classes): 123
+    Breakdown of excluded non-anemia classes:
+      Leukemia                                      44 rows
+      Leukemia with thrombocytopenia                10 rows
+      Thrombocytopenia                              69 rows
+    Total rows for training/testing : 1080
+    Label distribution:
+      Anemia subtypes (1)                            759  (70.3%)
+      Healthy (0)                                    321  (29.7%)
+      TOTAL                                         1080
+    Train rows : 864  |  Test rows : 216
+
+  DATA QUALITY NOTES:
+    LYMp: 62.0% of rows have mode value 25.845 (suspected pre-imputation).
+    LYMn: 62.0% of rows have mode value 1.88076 (suspected pre-imputation).
+    Both features are kept. This is documented for honest reporting.
+
+========================================================================
+DISCLAIMER
+========================================================================
+This is an educational project. Results are NOT clinically validated.
+Do not use model outputs for medical decisions.
+Consult a qualified healthcare professional for interpretation.

@@ -1,0 +1,450 @@
+{
+  "execution_time": "2026-10-11T20:02:33.401484",
+  "random_state": 42,
+  "models": {
+    "task_a_scenario1_logistic_regression": {
+      "task": "Task A (Multiclass)",
+      "scenario": "scenario1",
+      "model_name": "logistic_regression",
+      "train_rows": 983,
+      "test_rows": 241,
+      "cv_macro_f1": 0.658984637937226,
+      "test_accuracy": 0.7178423236514523,
+      "test_balanced_accuracy": 0.713381522245516,
+      "test_macro_f1": 0.6541321874151204,
+      "test_weighted_f1": 0.7280306160241234,
+      "test_log_loss": 1.0005720685614516,
+      "model_path": "ml_model/models/task_a_scenario1_logistic_regression.joblib",
+      "per_class": {
+        "Healthy": {
+          "precision": 0.9215686274509803,
+          "recall": 0.734375
+        },
+        "Iron deficiency anemia": {
+          "precision": 0.8157894736842105,
+          "recall": 0.8611111111111112
+        },
+        "Leukemia": {
+          "precision": 0.7777777777777778,
+          "recall": 0.7777777777777778
+        },
+        "Leukemia with thrombocytopenia": {
+          "precision": 0.6666666666666666,
+          "recall": 1.0
+        },
+        "Macrocytic anemia": {
+          "precision": 0.0,
+          "recall": 0.0
+        },
+        "Normocytic hypochromic anemia": {
+          "precision": 0.6170212765957447,
+          "recall": 0.5471698113207547
+        },
+        "Normocytic normochromic anemia": {
+          "precision": 0.7954545454545454,
+          "recall": 0.7
+        },
+        "Other microcytic anemia": {
+          "precision": 0.42105263157894735,
+          "recall": 0.8
+        },
+        "Thrombocytopenia": {
+          "precision": 0.6363636363636364,
+          "recall": 1.0
+        }
+      }
+    },
+    "task_a_scenario1_decision_tree": {
+      "task": "Task A (Multiclass)",
+      "scenario": "scenario1",
+      "model_name": "decision_tree",
+      "train_rows": 983,
+      "test_rows": 241,
+      "cv_macro_f1": 0.9653146975708382,
+      "test_accuracy": 0.991701244813278,
+      "test_balanced_accuracy": 0.9858024691358024,
+      "test_macro_f1": 0.9858024691358024,
+      "test_weighted_f1": 0.991701244813278,
+      "test_log_loss": 0.29911745551134583,
+      "model_path": "ml_model/models/task_a_scenario1_decision_tree.joblib",
+      "per_class": {
+        "Healthy": {
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "Iron deficiency anemia": {
+          "precision": 0.9722222222222222,
+          "recall": 0.9722222222222222
+        },
+        "Leukemia": {
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "Leukemia with thrombocytopenia": {
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "Macrocytic anemia": {
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "Normocytic hypochromic anemia": {
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "Normocytic normochromic anemia": {
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "Other microcytic anemia": {
+          "precision": 0.9,
+          "recall": 0.9
+        },
+        "Thrombocytopenia": {
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      }
+    },
+    "task_a_scenario1_random_forest": {
+      "task": "Task A (Multiclass)",
+      "scenario": "scenario1",
+      "model_name": "random_forest",
+      "train_rows": 983,
+      "test_rows": 241,
+      "cv_macro_f1": 0.9411477301394796,
+      "test_accuracy": 0.966804979253112,
+      "test_balanced_accuracy": 0.9388958770090845,
+      "test_macro_f1": 0.9262499656444585,
+      "test_weighted_f1": 0.9686295319463245,
+      "test_log_loss": 0.2016358930322204,
+      "model_path": "ml_model/models/task_a_scenario1_random_forest.joblib",
+      "per_class": {
+        "Healthy": {
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "Iron deficiency anemia": {
+          "precision": 0.972972972972973,
+          "recall": 1.0
+        },
+        "Leukemia": {
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "Leukemia with thrombocytopenia": {
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "Macrocytic anemia": {
+          "precision": 0.4,
+          "recall": 0.6666666666666666
+        },
+        "Normocytic hypochromic anemia": {
+          "precision": 0.9433962264150944,
+          "recall": 0.9433962264150944
+        },
+        "Normocytic normochromic anemia": {
+          "precision": 0.9791666666666666,
+          "recall": 0.94
+        },
+        "Other microcytic anemia": {
+          "precision": 1.0,
+          "recall": 0.9
+        },
+        "Thrombocytopenia": {
+          "precision": 1.0,
+          "recall": 1.0
+        }
+      }
+    },
+    "task_a_scenario2_logistic_regression": {
+      "task": "Task A (Multiclass)",
+      "scenario": "scenario2",
+      "model_name": "logistic_regression",
+      "train_rows": 962,
+      "test_rows": 241,
+      "cv_macro_f1": 0.7318643489131876,
+      "test_accuracy": 0.7925311203319502,
+      "test_balanced_accuracy": 0.7915089556087983,
+      "test_macro_f1": 0.7217271683393414,
+      "test_weighted_f1": 0.7994484444237022,
+      "test_log_loss": 0.5958204663078356,
+      "model_path": "ml_model/models/task_a_scenario2_logistic_regression.joblib",
+      "per_class": {
+        "Healthy": {
+          "precision": 0.9444444444444444,
+          "recall": 0.796875
+        },
+        "Iron deficiency anemia": {
+          "precision": 0.9166666666666666,
+          "recall": 0.9166666666666666
+        },
+        "Leukemia": {
+          "precision": 0.6666666666666666,
+          "recall": 0.8888888888888888
+        },
+        "Leukemia with thrombocytopenia": {
+          "precision": 0.6666666666666666,
+          "recall": 1.0
+        },
+        "Macrocytic anemia": {
+          "precision": 0.2,
+          "recall": 0.3333333333333333
+        },
+        "Normocytic hypochromic anemia": {
+          "precision": 0.7058823529411765,
+          "recall": 0.6792452830188679
+        },
+        "Normocytic normochromic anemia": {
+          "precision": 0.8863636363636364,
+          "recall": 0.78
+        },
+        "Other microcytic anemia": {
+          "precision": 0.47058823529411764,
+          "recall": 0.8
+        },
+        "Thrombocytopenia": {
+          "precision": 0.6842105263157895,
+          "recall": 0.9285714285714286
+        }
+      }
+    },
+    "task_a_scenario2_decision_tree": {
+      "task": "Task A (Multiclass)",
+      "scenario": "scenario2",
+      "model_name": "decision_tree",
+      "train_rows": 962,
+      "test_rows": 241,
+      "cv_macro_f1": 0.9678138263504139,
+      "test_accuracy": 0.975103734439834,
+      "test_balanced_accuracy": 0.9686067019400352,
+      "test_macro_f1": 0.9689021240233403,
+      "test_weighted_f1": 0.9750435635037589,
+      "test_log_loss": 0.7513828397637858,
+      "model_path": "ml_model/models/task_a_scenario2_decision_tree.joblib",
+      "per_class": {
+        "Healthy": {
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "Iron deficiency anemia": {
+          "precision": 0.9696969696969697,
+          "recall": 0.8888888888888888
+        },
+        "Leukemia": {
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "Leukemia with thrombocytopenia": {
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "Macrocytic anemia": {
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "Normocytic hypochromic anemia": {
+          "precision": 0.9464285714285714,
+          "recall": 1.0
+        },
+        "Normocytic normochromic anemia": {
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "Other microcytic anemia": {
+          "precision": 0.8181818181818182,
+          "recall": 0.9
+        },
+        "Thrombocytopenia": {
+          "precision": 1.0,
+          "recall": 0.9285714285714286
+        }
+      }
+    },
+    "task_a_scenario2_random_forest": {
+      "task": "Task A (Multiclass)",
+      "scenario": "scenario2",
+      "model_name": "random_forest",
+      "train_rows": 962,
+      "test_rows": 241,
+      "cv_macro_f1": 0.9558801604255157,
+      "test_accuracy": 0.950207468879668,
+      "test_balanced_accuracy": 0.9218258959768393,
+      "test_macro_f1": 0.9134804932617256,
+      "test_weighted_f1": 0.952049605305492,
+      "test_log_loss": 0.20474257428707782,
+      "model_path": "ml_model/models/task_a_scenario2_random_forest.joblib",
+      "per_class": {
+        "Healthy": {
+          "precision": 0.9846153846153847,
+          "recall": 1.0
+        },
+        "Iron deficiency anemia": {
+          "precision": 0.9705882352941176,
+          "recall": 0.9166666666666666
+        },
+        "Leukemia": {
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "Leukemia with thrombocytopenia": {
+          "precision": 1.0,
+          "recall": 1.0
+        },
+        "Macrocytic anemia": {
+          "precision": 0.4,
+          "recall": 0.6666666666666666
+        },
+        "Normocytic hypochromic anemia": {
+          "precision": 0.9074074074074074,
+          "recall": 0.9245283018867925
+        },
+        "Normocytic normochromic anemia": {
+          "precision": 0.96,
+          "recall": 0.96
+        },
+        "Other microcytic anemia": {
+          "precision": 1.0,
+          "recall": 0.9
+        },
+        "Thrombocytopenia": {
+          "precision": 1.0,
+          "recall": 0.9285714285714286
+        }
+      }
+    },
+    "task_b_scenario1_logistic_regression": {
+      "task": "Task B (Binary)",
+      "scenario": "scenario1",
+      "model_name": "logistic_regression",
+      "train_rows": 881,
+      "test_rows": 216,
+      "tuned_threshold": 0.39,
+      "test_accuracy": 0.9259259259259259,
+      "test_sensitivity_recall": 0.9605263157894737,
+      "test_specificity": 0.84375,
+      "test_precision": 0.9358974358974359,
+      "test_f1": 0.948051948051948,
+      "test_roc_auc": 0.9615542763157895,
+      "test_pr_auc": 0.9819300884091191,
+      "confusion_matrix": {
+        "TN": 54,
+        "FP": 10,
+        "FN": 6,
+        "TP": 146
+      },
+      "model_path": "ml_model/models/task_b_scenario1_logistic_regression.joblib"
+    },
+    "task_b_scenario1_decision_tree": {
+      "task": "Task B (Binary)",
+      "scenario": "scenario1",
+      "model_name": "decision_tree",
+      "train_rows": 881,
+      "test_rows": 216,
+      "tuned_threshold": 0.1,
+      "test_accuracy": 1.0,
+      "test_sensitivity_recall": 1.0,
+      "test_specificity": 1.0,
+      "test_precision": 1.0,
+      "test_f1": 1.0,
+      "test_roc_auc": 1.0,
+      "test_pr_auc": 1.0,
+      "confusion_matrix": {
+        "TN": 64,
+        "FP": 0,
+        "FN": 0,
+        "TP": 152
+      },
+      "model_path": "ml_model/models/task_b_scenario1_decision_tree.joblib"
+    },
+    "task_b_scenario1_random_forest": {
+      "task": "Task B (Binary)",
+      "scenario": "scenario1",
+      "model_name": "random_forest",
+      "train_rows": 881,
+      "test_rows": 216,
+      "tuned_threshold": 0.41000000000000003,
+      "test_accuracy": 1.0,
+      "test_sensitivity_recall": 1.0,
+      "test_specificity": 1.0,
+      "test_precision": 1.0,
+      "test_f1": 1.0,
+      "test_roc_auc": 1.0,
+      "test_pr_auc": 0.9999999999999998,
+      "confusion_matrix": {
+        "TN": 64,
+        "FP": 0,
+        "FN": 0,
+        "TP": 152
+      },
+      "model_path": "ml_model/models/task_b_scenario1_random_forest.joblib"
+    },
+    "task_b_scenario2_logistic_regression": {
+      "task": "Task B (Binary)",
+      "scenario": "scenario2",
+      "model_name": "logistic_regression",
+      "train_rows": 864,
+      "test_rows": 216,
+      "tuned_threshold": 0.33999999999999997,
+      "test_accuracy": 0.9814814814814815,
+      "test_sensitivity_recall": 1.0,
+      "test_specificity": 0.9375,
+      "test_precision": 0.9743589743589743,
+      "test_f1": 0.987012987012987,
+      "test_roc_auc": 0.9974300986842105,
+      "test_pr_auc": 0.998897934778799,
+      "confusion_matrix": {
+        "TN": 60,
+        "FP": 4,
+        "FN": 0,
+        "TP": 152
+      },
+      "model_path": "ml_model/models/task_b_scenario2_logistic_regression.joblib"
+    },
+    "task_b_scenario2_decision_tree": {
+      "task": "Task B (Binary)",
+      "scenario": "scenario2",
+      "model_name": "decision_tree",
+      "train_rows": 864,
+      "test_rows": 216,
+      "tuned_threshold": 0.1,
+      "test_accuracy": 1.0,
+      "test_sensitivity_recall": 1.0,
+      "test_specificity": 1.0,
+      "test_precision": 1.0,
+      "test_f1": 1.0,
+      "test_roc_auc": 1.0,
+      "test_pr_auc": 1.0,
+      "confusion_matrix": {
+        "TN": 64,
+        "FP": 0,
+        "FN": 0,
+        "TP": 152
+      },
+      "model_path": "ml_model/models/task_b_scenario2_decision_tree.joblib"
+    },
+    "task_b_scenario2_random_forest": {
+      "task": "Task B (Binary)",
+      "scenario": "scenario2",
+      "model_name": "random_forest",
+      "train_rows": 864,
+      "test_rows": 216,
+      "tuned_threshold": 0.37,
+      "test_accuracy": 1.0,
+      "test_sensitivity_recall": 1.0,
+      "test_specificity": 1.0,
+      "test_precision": 1.0,
+      "test_f1": 1.0,
+      "test_roc_auc": 1.0,
+      "test_pr_auc": 1.0,
+      "confusion_matrix": {
+        "TN": 64,
+        "FP": 0,
+        "FN": 0,
+        "TP": 152
+      },
+      "model_path": "ml_model/models/task_b_scenario2_random_forest.joblib"
+    }
+  }
+}
